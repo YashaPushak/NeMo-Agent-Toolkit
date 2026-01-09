@@ -15,3 +15,7 @@ workflow:
   tool_names: [current_datetime]
   verbose: true
   parse_agent_response_max_retries: 2
+##
+# SPDX-FileCopyrightText: Copyright (c) 2025, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+##

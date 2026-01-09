@@ -29,3 +29,7 @@ workflow:
       component_type: OpenAiConfig
       name: openai-gpt-4o-mini
       model_id: gpt-4o-mini
+##
+# SPDX-FileCopyrightText: Copyright (c) 2025, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+##
