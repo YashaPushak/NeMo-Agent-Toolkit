@@ -1,0 +1,17 @@
+functions:
+  current_datetime:
+    _type: current_datetime
+
+llms:
+  openai_chat:
+    _type: openai
+    model: gpt-4o-mini
+    temperature: 0.2
+
+workflow:
+  _type: react_agent
+  description: Simple LangChain ReAct agent using OpenAI
+  llm_name: openai_chat
+  tool_names: [current_datetime]
+  verbose: true
+  parse_agent_response_max_retries: 2

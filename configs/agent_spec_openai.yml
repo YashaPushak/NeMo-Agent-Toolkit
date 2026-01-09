@@ -1,0 +1,31 @@
+functions:
+  current_datetime:
+    _type: current_datetime
+
+workflow:
+  _type: agent_spec
+  description: Agent Spec via LangGraph adapter (OpenAI)
+  verbose: true
+  max_history: 10
+  llm_name: openai_placeholder
+  tool_names: [current_datetime]
+  agentspec_yaml: |
+    agentspec_version: 25.4.2
+    component_type: Agent
+    id: 3b7f7d68-7b4e-4a2b-9a7b-2d0b5f12c001
+    name: openai-echo-agent
+    description: Simple OpenAI-backed assistant that responds concisely.
+    system_prompt: >
+      You are a helpful assistant. Answer the user briefly and clearly.
+    tools:
+      - component_type: ServerTool
+        name: current_datetime
+        description: Returns the current date and time.
+        inputs: []
+        outputs:
+          - title: now
+            type: string
+    llm_config:
+      component_type: OpenAiConfig
+      name: openai-gpt-4o-mini
+      model_id: gpt-4o-mini
