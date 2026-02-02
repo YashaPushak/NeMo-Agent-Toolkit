@@ -39,6 +39,22 @@ class AgentSpecWorkflowConfig(AgentBaseConfig, name="agent_spec"):
     tool_names: list[FunctionRef | FunctionGroupRef] = Field(
         default_factory=list, description="Optional list of tool names/groups to expose to the Agent Spec runtime.")
 
+    tool_registry_factory: str | None = Field(
+        default=None,
+        description=(
+            "Optional module:function dotted path that returns a dict[str, Any] tool registry "
+            "for the Agent Spec runtime (e.g., 'demo.agentspec_rfv.nat_tool_registry:stage2_factory')."
+        ),
+    )
+
+    input_provider_factory: str | None = Field(
+        default=None,
+        description=(
+            "Optional module:function dotted path that returns a dict[str, Any] initial inputs "
+            "for the Agent Spec runtime given the user input string (e.g., 'demo.agentspec_rfv.nat_input_provider:stage2_inputs')."
+        ),
+    )
+
     max_history: int = Field(default=15, description="Maximum number of messages to keep in conversation history.")
 
     @model_validator(mode="after")

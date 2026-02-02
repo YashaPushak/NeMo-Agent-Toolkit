@@ -29,6 +29,40 @@ workflow:
       component_type: OpenAiConfig
       name: openai-gpt-4o-mini
       model_id: gpt-4o-mini
+ 
+llms:
+  openai_placeholder:
+    _type: openai
+    model_name: gpt-4o-mini
+    temperature: 0.2
+
+eval:
+  general:
+    max_concurrency: 2
+    output:
+      dir: ./.tmp/nat/agent_spec_openai/
+      cleanup: false
+      job_management:
+        append_job_id_to_output_dir: true
+    dataset:
+      _type: json
+      file_path: configs/datasets/agent_spec_openai_samples.json
+      structure:
+        disable: true
+    profiler:
+      compute_llm_metrics: true
+      token_uniqueness_forecast: true
+      workflow_runtime_forecast: true
+      csv_exclude_io_text: true
+      prompt_caching_prefixes:
+        enable: true
+        min_frequency: 0.1
+      bottleneck_analysis:
+        enable_nested_stack: true
+      concurrency_spike_analysis:
+        enable: true
+        spike_threshold: 8
+  evaluators: {}
 ##
 # SPDX-FileCopyrightText: Copyright (c) 2025, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
 # SPDX-License-Identifier: Apache-2.0

@@ -82,6 +82,18 @@ async def agent_spec_workflow(config: AgentSpecWorkflowConfig, builder):
     tools = await builder.get_tools(tool_names=config.tool_names, wrapper_type=LLMFrameworkEnum.LANGCHAIN)
     tool_registry = {getattr(t, "name", f"tool_{i}"): t for i, t in enumerate(tools)} if tools else {}
 
+    # Optionally extend with a custom registry factory (module:function)
+    if getattr(config, "tool_registry_factory", None):
+        mod_path, fn_name = str(config.tool_registry_factory).split(":", 1)
+        import importlib
+
+        mod = importlib.import_module(mod_path)
+        factory = getattr(mod, fn_name)
+        custom_registry = factory()
+        if isinstance(custom_registry, dict):
+            # custom overrides NAT tools on name conflicts
+            tool_registry = {**tool_registry, **custom_registry}
+
     fmt, payload = read_agentspec_payload(config)
     loader = AgentSpecLoader(tool_registry=tool_registry, checkpointer=None, config=None)
 
@@ -90,6 +102,15 @@ async def agent_spec_workflow(config: AgentSpecWorkflowConfig, builder):
         component = loader.load_yaml(payload)
     else:
         component = loader.load_json(payload)
+
+    # Optional input provider: transform raw user input into AgentSpec inputs
+    input_provider = None
+    if getattr(config, "input_provider_factory", None):
+        mod_path, fn_name = str(config.input_provider_factory).split(":", 1)
+        import importlib
+
+        mod = importlib.import_module(mod_path)
+        input_provider = getattr(mod, fn_name)
 
     async def _response_fn(chat_request_or_message: ChatRequestOrMessage) -> ChatResponse | str:
         from langchain_core.messages import trim_messages  # lazy import with LANGCHAIN wrapper
@@ -107,8 +128,16 @@ async def agent_spec_workflow(config: AgentSpecWorkflowConfig, builder):
                                     start_on="human",
                                     include_system=True)
 
-            # Best-effort: pass messages in a generic shape expected by adapter graphs
-            input_state: dict[str, Any] = {"messages": _to_plain_messages(trimmed)}
+            # Prepare input state for Agent Spec component
+            if input_provider:
+                # Convert to plain messages to robustly extract user content regardless of object shape
+                plain_msgs = _to_plain_messages(trimmed)
+                latest_user = next((m for m in reversed(plain_msgs) if str(m.get("role")).lower() in ("user", "human", "ai", "assistant")), None)
+                user_text = (latest_user or {}).get("content", "")
+                input_state: dict[str, Any] = {"inputs": input_provider(user_text or "")}
+            else:
+                # Fallback: pass messages to graph; some AgentSpec graphs can accept this
+                input_state: dict[str, Any] = {"messages": _to_plain_messages(trimmed)}
 
             result: Any
             result = await component.ainvoke(input_state)
