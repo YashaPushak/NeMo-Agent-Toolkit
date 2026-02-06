@@ -1,0 +1,26 @@
+[
+  {
+    "question": "Were international funds transfers for customer CUTRSTFTNAC-101 at least 1.2 times more frequent in December 2015 than in November 2015?",
+    "output": "Yes"
+  },
+  {
+    "question": "Were international funds transfers for customer CUTRSTFTNAC-101 at least 3 times more frequent in December 2015 compared to November 2015?",
+    "output": "No"
+  },
+  {
+    "question": "Did the customer with CUST_INTRL_ID=CUTRSTFTNAC-101 initiate more than 6 wire transfers on any single day during November 2015?",
+    "output": "No"
+  },
+  {
+    "question": "Did the customer  with CUST_INTRL_ID=CUTRSTFTNAC-101 initiate more than 2 wire transfers on any single day during November 2015?",
+    "output": "Yes"
+  },
+  {
+    "question": "Did the customer (ACTRETGRREG32) deposit cash by means of numerous credit slips such that each deposit was not substantial (less than $1200), but the cumulative amount exceeded $7,000 within any period of less than three days during 12/2015?",
+    "output": "No"
+  },
+  {
+    "question": "Did the customer (ACTRETGRREG32) deposit cash by means of numerous credit slips such that each deposit was not substantial (less than $1200), but the cumulative amount exceeded $20,000 within any period of less than three days during 12/2015?",
+    "output": "No"
+  }
+]

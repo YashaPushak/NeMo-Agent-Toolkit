@@ -1,0 +1,2913 @@
+{
+  "component_type": "Flow",
+  "id": "4224bb8b-35f6-48b0-867a-c6002b97aba5",
+  "name": "flow_6d8ac5b1__auto",
+  "description": "",
+  "metadata": {
+    "__metadata_info__": {}
+  },
+  "inputs": [
+    {
+      "description": "Schema description of the available tables.",
+      "type": "string",
+      "title": "tables_io"
+    },
+    {
+      "description": "Task Definition",
+      "type": "string",
+      "title": "statement_io_raw"
+    },
+    {
+      "description": "Scenario of Red Flag",
+      "type": "string",
+      "title": "scenario_name_io"
+    },
+    {
+      "description": "Scenario of Red Flag",
+      "type": "string",
+      "title": "period_io"
+    },
+    {
+      "description": "Scenario of Red Flag",
+      "type": "string",
+      "title": "customer_id_io"
+    },
+    {
+      "description": "Threshold tables for different scenarios.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "key_type": {
+        "type": "string"
+      },
+      "title": "threshold_tables"
+    }
+  ],
+  "outputs": [
+    {
+      "type": "boolean",
+      "title": "successful_reformulation"
+    },
+    {
+      "type": "string",
+      "title": "exist_clarify_tag"
+    },
+    {
+      "type": "string",
+      "title": "output",
+      "default": ""
+    },
+    {
+      "type": "boolean",
+      "title": "is_undetermined"
+    },
+    {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "clarification_questions"
+    },
+    {
+      "type": "string",
+      "title": "tool_output"
+    }
+  ],
+  "start_node": {
+    "$component_ref": "87a095e0-784e-43bb-b5e3-5f7ff35ef281"
+  },
+  "nodes": [
+    {
+      "$component_ref": "87a095e0-784e-43bb-b5e3-5f7ff35ef281"
+    },
+    {
+      "$component_ref": "deab18c7-9f2b-43ae-8c92-facd598e7c8b"
+    },
+    {
+      "$component_ref": "550cabbb-1797-44fa-a357-367fc2537659"
+    },
+    {
+      "$component_ref": "7f59b074-39af-4efa-a714-7d0b89886a3f"
+    },
+    {
+      "$component_ref": "f2d6dd7f-4432-45fd-9a0e-520a4e195e10"
+    },
+    {
+      "$component_ref": "a05fbe8b-4f3e-443d-af9b-5fdac5a94377"
+    },
+    {
+      "$component_ref": "c7e468c9-029c-4793-a4f3-2e371462f379"
+    },
+    {
+      "$component_ref": "8d927854-af46-47d0-a73f-2489871713a5"
+    },
+    {
+      "$component_ref": "26cddc52-0b16-49ab-8041-5eccca604dbe"
+    },
+    {
+      "$component_ref": "a5659de6-210e-4373-b770-89f051f38c13"
+    },
+    {
+      "$component_ref": "c14f5179-9c56-497f-9773-e84c006423a6"
+    },
+    {
+      "$component_ref": "a90651cc-d885-430d-8ec6-eb27d8fedc94"
+    },
+    {
+      "$component_ref": "b4c143e8-2a74-4cf5-abef-74ee187f2fb8"
+    },
+    {
+      "$component_ref": "c879d25c-614e-4ed1-bc0d-80dd8dfe0d4d"
+    },
+    {
+      "$component_ref": "593c85ee-dacc-4ffd-8eff-f8ecfeca2ab5"
+    }
+  ],
+  "control_flow_connections": [
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "32614d02-90c2-4200-bda5-a2c707161d84",
+      "name": "start_step_to_rendering_step_control_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "from_node": {
+        "$component_ref": "87a095e0-784e-43bb-b5e3-5f7ff35ef281"
+      },
+      "from_branch": null,
+      "to_node": {
+        "$component_ref": "deab18c7-9f2b-43ae-8c92-facd598e7c8b"
+      }
+    },
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "e5683ff4-3d05-4297-abbc-3d74e461b11d",
+      "name": "rendering_step_to_threshold_get_step_control_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "from_node": {
+        "$component_ref": "deab18c7-9f2b-43ae-8c92-facd598e7c8b"
+      },
+      "from_branch": null,
+      "to_node": {
+        "$component_ref": "550cabbb-1797-44fa-a357-367fc2537659"
+      }
+    },
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "2ab2a414-8b88-46a7-8207-92937f65f45d",
+      "name": "threshold_get_step_to_reformulation_step_control_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "from_node": {
+        "$component_ref": "550cabbb-1797-44fa-a357-367fc2537659"
+      },
+      "from_branch": null,
+      "to_node": {
+        "$component_ref": "7f59b074-39af-4efa-a714-7d0b89886a3f"
+      }
+    },
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "d1b7dcdb-28e2-4707-97c6-97c341fa1bd6",
+      "name": "reformulation_step_to_reformulated_question_extraction_step_control_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "from_node": {
+        "$component_ref": "7f59b074-39af-4efa-a714-7d0b89886a3f"
+      },
+      "from_branch": null,
+      "to_node": {
+        "$component_ref": "f2d6dd7f-4432-45fd-9a0e-520a4e195e10"
+      }
+    },
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "a65933ae-83b2-44f0-9e72-83c14a457393",
+      "name": "reformulated_question_extraction_step_to_is_clarification_needed_step_control_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "from_node": {
+        "$component_ref": "f2d6dd7f-4432-45fd-9a0e-520a4e195e10"
+      },
+      "from_branch": null,
+      "to_node": {
+        "$component_ref": "a05fbe8b-4f3e-443d-af9b-5fdac5a94377"
+      }
+    },
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "d361253e-85e6-4030-a501-963a1d460ad1",
+      "name": "is_clarification_needed_step_to_is_clarification_needed_branching_step_control_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "from_node": {
+        "$component_ref": "a05fbe8b-4f3e-443d-af9b-5fdac5a94377"
+      },
+      "from_branch": null,
+      "to_node": {
+        "$component_ref": "c7e468c9-029c-4793-a4f3-2e371462f379"
+      }
+    },
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "c6b1626d-d02b-4582-b01e-7083f1b77e72",
+      "name": "is_clarification_needed_branching_step_to_questioning_step_control_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "from_node": {
+        "$component_ref": "c7e468c9-029c-4793-a4f3-2e371462f379"
+      },
+      "from_branch": "default",
+      "to_node": {
+        "$component_ref": "8d927854-af46-47d0-a73f-2489871713a5"
+      }
+    },
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "7ea0a56f-a322-43c6-8f71-4b13558a354d",
+      "name": "is_clarification_needed_branching_step_to_is_undetermined_step_control_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "from_node": {
+        "$component_ref": "c7e468c9-029c-4793-a4f3-2e371462f379"
+      },
+      "from_branch": "no_clarification",
+      "to_node": {
+        "$component_ref": "26cddc52-0b16-49ab-8041-5eccca604dbe"
+      }
+    },
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "4d7d4fee-44d6-40de-a3b7-65761c1c92e7",
+      "name": "questioning_step_to_questions_extraction_step_control_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "from_node": {
+        "$component_ref": "8d927854-af46-47d0-a73f-2489871713a5"
+      },
+      "from_branch": null,
+      "to_node": {
+        "$component_ref": "a5659de6-210e-4373-b770-89f051f38c13"
+      }
+    },
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "54b38f23-4dba-4c5a-8f26-5e4a6e6347da",
+      "name": "questions_extraction_step_to_user_asking_step_control_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "from_node": {
+        "$component_ref": "a5659de6-210e-4373-b770-89f051f38c13"
+      },
+      "from_branch": null,
+      "to_node": {
+        "$component_ref": "c14f5179-9c56-497f-9773-e84c006423a6"
+      }
+    },
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "e188381f-3c9b-47b7-9ce4-1e8c06c4331d",
+      "name": "user_asking_step_to_concatenate_clarifications_step_control_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "from_node": {
+        "$component_ref": "c14f5179-9c56-497f-9773-e84c006423a6"
+      },
+      "from_branch": null,
+      "to_node": {
+        "$component_ref": "a90651cc-d885-430d-8ec6-eb27d8fedc94"
+      }
+    },
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "b048dbca-eca3-4952-8244-945b100ca459",
+      "name": "concatenate_clarifications_step_to_final_reformulation_step_control_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "from_node": {
+        "$component_ref": "a90651cc-d885-430d-8ec6-eb27d8fedc94"
+      },
+      "from_branch": null,
+      "to_node": {
+        "$component_ref": "b4c143e8-2a74-4cf5-abef-74ee187f2fb8"
+      }
+    },
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "a5549c5c-de26-4121-bb1a-b696bc6af739",
+      "name": "final_reformulation_step_to_final_extraction_step_control_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "from_node": {
+        "$component_ref": "b4c143e8-2a74-4cf5-abef-74ee187f2fb8"
+      },
+      "from_branch": null,
+      "to_node": {
+        "$component_ref": "c879d25c-614e-4ed1-bc0d-80dd8dfe0d4d"
+      }
+    },
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "2d598186-82a2-4ae9-8001-5fdef0500341",
+      "name": "final_extraction_step_to_is_undetermined_step_control_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "from_node": {
+        "$component_ref": "c879d25c-614e-4ed1-bc0d-80dd8dfe0d4d"
+      },
+      "from_branch": null,
+      "to_node": {
+        "$component_ref": "26cddc52-0b16-49ab-8041-5eccca604dbe"
+      }
+    },
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "c7edfba2-177f-4bfc-8366-205c314f576e",
+      "name": "is_undetermined_step_to_None End node_control_flow_edge",
+      "description": null,
+      "metadata": {},
+      "from_node": {
+        "$component_ref": "26cddc52-0b16-49ab-8041-5eccca604dbe"
+      },
+      "from_branch": null,
+      "to_node": {
+        "$component_ref": "593c85ee-dacc-4ffd-8eff-f8ecfeca2ab5"
+      }
+    }
+  ],
+  "data_flow_connections": [
+    {
+      "component_type": "DataFlowEdge",
+      "id": "62f15c5c-9102-45a1-8cfd-6879b3f90402",
+      "name": "start_step_customer_id_io_to_rendering_step_customer_id_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "87a095e0-784e-43bb-b5e3-5f7ff35ef281"
+      },
+      "source_output": "customer_id_io",
+      "destination_node": {
+        "$component_ref": "deab18c7-9f2b-43ae-8c92-facd598e7c8b"
+      },
+      "destination_input": "customer_id_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "37d653a9-48d2-4312-997d-ddc02630fa22",
+      "name": "start_step_period_io_to_rendering_step_period_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "87a095e0-784e-43bb-b5e3-5f7ff35ef281"
+      },
+      "source_output": "period_io",
+      "destination_node": {
+        "$component_ref": "deab18c7-9f2b-43ae-8c92-facd598e7c8b"
+      },
+      "destination_input": "period_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "fe3a9f5d-d3f8-411b-b41b-f8d3c67c636d",
+      "name": "start_step_statement_io_raw_to_rendering_step_statement_io_raw_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "87a095e0-784e-43bb-b5e3-5f7ff35ef281"
+      },
+      "source_output": "statement_io_raw",
+      "destination_node": {
+        "$component_ref": "deab18c7-9f2b-43ae-8c92-facd598e7c8b"
+      },
+      "destination_input": "statement_io_raw"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "d3eaf611-d6fc-452e-be52-f88ce955c6e0",
+      "name": "start_step_scenario_name_io_to_threshold_get_step_scenario_name_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "87a095e0-784e-43bb-b5e3-5f7ff35ef281"
+      },
+      "source_output": "scenario_name_io",
+      "destination_node": {
+        "$component_ref": "550cabbb-1797-44fa-a357-367fc2537659"
+      },
+      "destination_input": "scenario_name_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "afbf265d-d5d4-484d-b609-fb1a44dff711",
+      "name": "start_step_threshold_tables_to_threshold_get_step_threshold_tables_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "87a095e0-784e-43bb-b5e3-5f7ff35ef281"
+      },
+      "source_output": "threshold_tables",
+      "destination_node": {
+        "$component_ref": "550cabbb-1797-44fa-a357-367fc2537659"
+      },
+      "destination_input": "threshold_tables"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "ea46ebb0-9ba4-4875-90e8-c09bc30a4c5a",
+      "name": "start_step_tables_io_to_reformulation_step_tables_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "87a095e0-784e-43bb-b5e3-5f7ff35ef281"
+      },
+      "source_output": "tables_io",
+      "destination_node": {
+        "$component_ref": "7f59b074-39af-4efa-a714-7d0b89886a3f"
+      },
+      "destination_input": "tables_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "e5b769a3-b1bb-4643-8d73-553d42b59160",
+      "name": "rendering_step_output_to_reformulation_step_statement_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "deab18c7-9f2b-43ae-8c92-facd598e7c8b"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "7f59b074-39af-4efa-a714-7d0b89886a3f"
+      },
+      "destination_input": "statement_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "0e4b9643-8d02-45cb-8ec0-6e8fc263aa6a",
+      "name": "threshold_get_step_tool_output_to_reformulation_step_threshold_table_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "550cabbb-1797-44fa-a357-367fc2537659"
+      },
+      "source_output": "tool_output",
+      "destination_node": {
+        "$component_ref": "7f59b074-39af-4efa-a714-7d0b89886a3f"
+      },
+      "destination_input": "threshold_table_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "07c689f1-4403-4fd1-bf98-a0b10c0640eb",
+      "name": "reformulation_step_output_to_reformulated_question_extraction_step_text_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "7f59b074-39af-4efa-a714-7d0b89886a3f"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "f2d6dd7f-4432-45fd-9a0e-520a4e195e10"
+      },
+      "destination_input": "text"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "a4d67733-92c2-4c44-88f8-f0465bedd0c9",
+      "name": "start_step_tables_io_to_questioning_step_tables_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "87a095e0-784e-43bb-b5e3-5f7ff35ef281"
+      },
+      "source_output": "tables_io",
+      "destination_node": {
+        "$component_ref": "8d927854-af46-47d0-a73f-2489871713a5"
+      },
+      "destination_input": "tables_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "5c27c821-3b98-4f83-b723-7d703e7088b4",
+      "name": "rendering_step_output_to_questioning_step_statement_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "deab18c7-9f2b-43ae-8c92-facd598e7c8b"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "8d927854-af46-47d0-a73f-2489871713a5"
+      },
+      "destination_input": "statement_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "db47b4ff-ed87-4462-9fac-f1925aea15c1",
+      "name": "reformulated_question_extraction_step_output_to_is_clarification_needed_step_input_text_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "f2d6dd7f-4432-45fd-9a0e-520a4e195e10"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "a05fbe8b-4f3e-443d-af9b-5fdac5a94377"
+      },
+      "destination_input": "input_text"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "d41d781b-8e48-4a57-a54a-567e52497046",
+      "name": "is_clarification_needed_step_exist_clarify_tag_to_is_clarification_needed_branching_step_next_step_name_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "a05fbe8b-4f3e-443d-af9b-5fdac5a94377"
+      },
+      "source_output": "exist_clarify_tag",
+      "destination_node": {
+        "$component_ref": "c7e468c9-029c-4793-a4f3-2e371462f379"
+      },
+      "destination_input": "next_step_name"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "805700dd-bc1b-469d-91ee-f67c388b6341",
+      "name": "reformulated_question_extraction_step_output_to_questioning_step_reformulated_question_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "f2d6dd7f-4432-45fd-9a0e-520a4e195e10"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "8d927854-af46-47d0-a73f-2489871713a5"
+      },
+      "destination_input": "reformulated_question_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "9041b28e-b60c-4751-bf1c-40c4556154f2",
+      "name": "questioning_step_output_to_questions_extraction_step_prompt_output_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "8d927854-af46-47d0-a73f-2489871713a5"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "a5659de6-210e-4373-b770-89f051f38c13"
+      },
+      "destination_input": "prompt_output"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "7674aa18-d49a-4d77-8f3e-6fa1df3cf9df",
+      "name": "questions_extraction_step_question_list_to_user_asking_step_iterated_question_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "a5659de6-210e-4373-b770-89f051f38c13"
+      },
+      "source_output": "question_list",
+      "destination_node": {
+        "$component_ref": "c14f5179-9c56-497f-9773-e84c006423a6"
+      },
+      "destination_input": "iterated_question_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "0e38d519-30fc-4b4c-b741-58c5f46bd102",
+      "name": "start_step_tables_io_to_user_asking_step_iterated_tables_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "87a095e0-784e-43bb-b5e3-5f7ff35ef281"
+      },
+      "source_output": "tables_io",
+      "destination_node": {
+        "$component_ref": "c14f5179-9c56-497f-9773-e84c006423a6"
+      },
+      "destination_input": "iterated_tables_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "2c622948-5692-4108-9c7c-e32dcf4c4a95",
+      "name": "rendering_step_output_to_user_asking_step_iterated_statement_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "deab18c7-9f2b-43ae-8c92-facd598e7c8b"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "c14f5179-9c56-497f-9773-e84c006423a6"
+      },
+      "destination_input": "iterated_statement_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "0803859f-ce98-45f4-b464-af8682b59957",
+      "name": "user_asking_step_collected_clarification_to_concatenate_clarifications_step_clarifications_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "c14f5179-9c56-497f-9773-e84c006423a6"
+      },
+      "source_output": "collected_clarification",
+      "destination_node": {
+        "$component_ref": "a90651cc-d885-430d-8ec6-eb27d8fedc94"
+      },
+      "destination_input": "clarifications_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "7e9194a3-3bbf-4f78-9cdf-65e35857149c",
+      "name": "concatenate_clarifications_step_clarifications_to_final_reformulation_step_clarifications_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "a90651cc-d885-430d-8ec6-eb27d8fedc94"
+      },
+      "source_output": "clarifications",
+      "destination_node": {
+        "$component_ref": "b4c143e8-2a74-4cf5-abef-74ee187f2fb8"
+      },
+      "destination_input": "clarifications"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "908d2557-2be5-4d86-a556-48fc95c499b6",
+      "name": "reformulated_question_extraction_step_output_to_final_reformulation_step_reformulated_question_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "f2d6dd7f-4432-45fd-9a0e-520a4e195e10"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "b4c143e8-2a74-4cf5-abef-74ee187f2fb8"
+      },
+      "destination_input": "reformulated_question_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "ee4362c1-9f14-4ec4-94f6-27084d997336",
+      "name": "rendering_step_output_to_final_reformulation_step_statement_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "deab18c7-9f2b-43ae-8c92-facd598e7c8b"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "b4c143e8-2a74-4cf5-abef-74ee187f2fb8"
+      },
+      "destination_input": "statement_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "b68f77a7-76dd-47c8-8f8d-b7bf64a2d005",
+      "name": "final_reformulation_step_output_to_final_extraction_step_text_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "b4c143e8-2a74-4cf5-abef-74ee187f2fb8"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "c879d25c-614e-4ed1-bc0d-80dd8dfe0d4d"
+      },
+      "destination_input": "text"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "e3fef26f-1ff5-4d06-9d2a-e110570df4f5",
+      "name": "questions_extraction_step_question_list_to_is_undetermined_step_clarification_question_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "a5659de6-210e-4373-b770-89f051f38c13"
+      },
+      "source_output": "question_list",
+      "destination_node": {
+        "$component_ref": "26cddc52-0b16-49ab-8041-5eccca604dbe"
+      },
+      "destination_input": "clarification_question"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "0bfc6a5d-5a77-4c6f-b39d-cd6d1bc98233",
+      "name": "user_asking_step_collected_q_regex_output_to_is_undetermined_step_clarification_answer_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "c14f5179-9c56-497f-9773-e84c006423a6"
+      },
+      "source_output": "collected_q_regex_output",
+      "destination_node": {
+        "$component_ref": "26cddc52-0b16-49ab-8041-5eccca604dbe"
+      },
+      "destination_input": "clarification_answer"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "462646c3-4438-45b3-93ea-2b4b94fec3fb",
+      "name": "user_asking_step_collected_answer_question_to_is_undetermined_step_llm_clarification_answer_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "c14f5179-9c56-497f-9773-e84c006423a6"
+      },
+      "source_output": "collected_answer_question",
+      "destination_node": {
+        "$component_ref": "26cddc52-0b16-49ab-8041-5eccca604dbe"
+      },
+      "destination_input": "llm_clarification_answer"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "d0554e8b-e20e-47bd-a507-7c0e36e65c0e",
+      "name": "is_undetermined_step_successful_reformulation_to_None End node_successful_reformulation_data_flow_edge",
+      "description": null,
+      "metadata": {},
+      "source_node": {
+        "$component_ref": "26cddc52-0b16-49ab-8041-5eccca604dbe"
+      },
+      "source_output": "successful_reformulation",
+      "destination_node": {
+        "$component_ref": "593c85ee-dacc-4ffd-8eff-f8ecfeca2ab5"
+      },
+      "destination_input": "successful_reformulation"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "5340db4e-0b40-41fa-b073-54db6e79ffb3",
+      "name": "is_clarification_needed_step_exist_clarify_tag_to_None End node_exist_clarify_tag_data_flow_edge",
+      "description": null,
+      "metadata": {},
+      "source_node": {
+        "$component_ref": "a05fbe8b-4f3e-443d-af9b-5fdac5a94377"
+      },
+      "source_output": "exist_clarify_tag",
+      "destination_node": {
+        "$component_ref": "593c85ee-dacc-4ffd-8eff-f8ecfeca2ab5"
+      },
+      "destination_input": "exist_clarify_tag"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "cb5183e5-2965-4b6e-bcc6-92312b89fc3b",
+      "name": "rendering_step_output_to_None End node_output_data_flow_edge",
+      "description": null,
+      "metadata": {},
+      "source_node": {
+        "$component_ref": "deab18c7-9f2b-43ae-8c92-facd598e7c8b"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "593c85ee-dacc-4ffd-8eff-f8ecfeca2ab5"
+      },
+      "destination_input": "output"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "fcb84fae-7b9d-4270-a8f4-67036cefae3d",
+      "name": "reformulation_step_output_to_None End node_output_data_flow_edge",
+      "description": null,
+      "metadata": {},
+      "source_node": {
+        "$component_ref": "7f59b074-39af-4efa-a714-7d0b89886a3f"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "593c85ee-dacc-4ffd-8eff-f8ecfeca2ab5"
+      },
+      "destination_input": "output"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "4a94b40a-0f77-467d-baae-8dd81f61a530",
+      "name": "reformulated_question_extraction_step_output_to_None End node_output_data_flow_edge",
+      "description": null,
+      "metadata": {},
+      "source_node": {
+        "$component_ref": "f2d6dd7f-4432-45fd-9a0e-520a4e195e10"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "593c85ee-dacc-4ffd-8eff-f8ecfeca2ab5"
+      },
+      "destination_input": "output"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "b5f354ad-2a2d-4e4a-bbe7-a5d8646c2f22",
+      "name": "questioning_step_output_to_None End node_output_data_flow_edge",
+      "description": null,
+      "metadata": {},
+      "source_node": {
+        "$component_ref": "8d927854-af46-47d0-a73f-2489871713a5"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "593c85ee-dacc-4ffd-8eff-f8ecfeca2ab5"
+      },
+      "destination_input": "output"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "c615e323-7bf9-4bd7-ba96-aed22b947510",
+      "name": "final_reformulation_step_output_to_None End node_output_data_flow_edge",
+      "description": null,
+      "metadata": {},
+      "source_node": {
+        "$component_ref": "b4c143e8-2a74-4cf5-abef-74ee187f2fb8"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "593c85ee-dacc-4ffd-8eff-f8ecfeca2ab5"
+      },
+      "destination_input": "output"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "0318206b-fe57-41a1-b321-4bc325adfa71",
+      "name": "final_extraction_step_output_to_None End node_output_data_flow_edge",
+      "description": null,
+      "metadata": {},
+      "source_node": {
+        "$component_ref": "c879d25c-614e-4ed1-bc0d-80dd8dfe0d4d"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "593c85ee-dacc-4ffd-8eff-f8ecfeca2ab5"
+      },
+      "destination_input": "output"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "fb7469e2-c28c-4b13-8f59-c66e0333a6fc",
+      "name": "is_undetermined_step_is_undetermined_to_None End node_is_undetermined_data_flow_edge",
+      "description": null,
+      "metadata": {},
+      "source_node": {
+        "$component_ref": "26cddc52-0b16-49ab-8041-5eccca604dbe"
+      },
+      "source_output": "is_undetermined",
+      "destination_node": {
+        "$component_ref": "593c85ee-dacc-4ffd-8eff-f8ecfeca2ab5"
+      },
+      "destination_input": "is_undetermined"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "bb1090b1-8815-40c8-b8a2-e3aba57ca78f",
+      "name": "is_undetermined_step_clarification_questions_to_None End node_clarification_questions_data_flow_edge",
+      "description": null,
+      "metadata": {},
+      "source_node": {
+        "$component_ref": "26cddc52-0b16-49ab-8041-5eccca604dbe"
+      },
+      "source_output": "clarification_questions",
+      "destination_node": {
+        "$component_ref": "593c85ee-dacc-4ffd-8eff-f8ecfeca2ab5"
+      },
+      "destination_input": "clarification_questions"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "efa13bb7-ec7e-472a-b57f-dc9af7244477",
+      "name": "threshold_get_step_tool_output_to_None End node_tool_output_data_flow_edge",
+      "description": null,
+      "metadata": {},
+      "source_node": {
+        "$component_ref": "550cabbb-1797-44fa-a357-367fc2537659"
+      },
+      "source_output": "tool_output",
+      "destination_node": {
+        "$component_ref": "593c85ee-dacc-4ffd-8eff-f8ecfeca2ab5"
+      },
+      "destination_input": "tool_output"
+    }
+  ],
+  "$referenced_components": {
+    "87a095e0-784e-43bb-b5e3-5f7ff35ef281": {
+      "component_type": "StartNode",
+      "id": "87a095e0-784e-43bb-b5e3-5f7ff35ef281",
+      "name": "start_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [
+        {
+          "description": "Schema description of the available tables.",
+          "type": "string",
+          "title": "tables_io"
+        },
+        {
+          "description": "Task Definition",
+          "type": "string",
+          "title": "statement_io_raw"
+        },
+        {
+          "description": "Scenario of Red Flag",
+          "type": "string",
+          "title": "scenario_name_io"
+        },
+        {
+          "description": "Scenario of Red Flag",
+          "type": "string",
+          "title": "period_io"
+        },
+        {
+          "description": "Scenario of Red Flag",
+          "type": "string",
+          "title": "customer_id_io"
+        },
+        {
+          "description": "Threshold tables for different scenarios.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "key_type": {
+            "type": "string"
+          },
+          "title": "threshold_tables"
+        }
+      ],
+      "outputs": [
+        {
+          "description": "Schema description of the available tables.",
+          "type": "string",
+          "title": "tables_io"
+        },
+        {
+          "description": "Task Definition",
+          "type": "string",
+          "title": "statement_io_raw"
+        },
+        {
+          "description": "Scenario of Red Flag",
+          "type": "string",
+          "title": "scenario_name_io"
+        },
+        {
+          "description": "Scenario of Red Flag",
+          "type": "string",
+          "title": "period_io"
+        },
+        {
+          "description": "Scenario of Red Flag",
+          "type": "string",
+          "title": "customer_id_io"
+        },
+        {
+          "description": "Threshold tables for different scenarios.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "key_type": {
+            "type": "string"
+          },
+          "title": "threshold_tables"
+        }
+      ],
+      "branches": [
+        "next"
+      ]
+    },
+    "deab18c7-9f2b-43ae-8c92-facd598e7c8b": {
+      "component_type": "ToolNode",
+      "id": "deab18c7-9f2b-43ae-8c92-facd598e7c8b",
+      "name": "rendering_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [
+        {
+          "type": "string",
+          "title": "template",
+          "default": "{{ statement_io_raw }} for customer with customer ID = {{ customer_id_io }} for the period: {{ period_io }}"
+        },
+        {
+          "description": "\"statement_io_raw\" input variable for the template",
+          "type": "string",
+          "title": "statement_io_raw"
+        },
+        {
+          "description": "\"customer_id_io\" input variable for the template",
+          "type": "string",
+          "title": "customer_id_io"
+        },
+        {
+          "description": "\"period_io\" input variable for the template",
+          "type": "string",
+          "title": "period_io"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "string",
+          "title": "output"
+        }
+      ],
+      "branches": [
+        "next"
+      ],
+      "tool": {
+        "component_type": "ServerTool",
+        "id": "b773f06e-917b-4a21-8453-6d11c57a7dac",
+        "name": "template_render",
+        "description": "Template render",
+        "metadata": {
+          "__metadata_info__": {}
+        },
+        "inputs": [
+          {
+            "type": "string",
+            "title": "template",
+            "default": "{{ statement_io_raw }} for customer with customer ID = {{ customer_id_io }} for the period: {{ period_io }}"
+          },
+          {
+            "description": "\"statement_io_raw\" input variable for the template",
+            "type": "string",
+            "title": "statement_io_raw"
+          },
+          {
+            "description": "\"customer_id_io\" input variable for the template",
+            "type": "string",
+            "title": "customer_id_io"
+          },
+          {
+            "description": "\"period_io\" input variable for the template",
+            "type": "string",
+            "title": "period_io"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "string",
+            "title": "output"
+          }
+        ],
+        "requires_confirmation": false
+      }
+    },
+    "550cabbb-1797-44fa-a357-367fc2537659": {
+      "component_type": "ToolNode",
+      "id": "550cabbb-1797-44fa-a357-367fc2537659",
+      "name": "threshold_get_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [
+        {
+          "type": "string",
+          "title": "scenario_name_io"
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "key_type": {
+            "type": "string"
+          },
+          "title": "threshold_tables"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "string",
+          "title": "tool_output"
+        }
+      ],
+      "branches": [
+        "next"
+      ],
+      "tool": {
+        "component_type": "ServerTool",
+        "id": "4fe6e564-ca14-4c10-a032-81c05f9bb22e",
+        "name": "execute_query_tool",
+        "description": "executes a query on mock FCDM Schema adn outputs in string format",
+        "metadata": {
+          "__metadata_info__": {}
+        },
+        "inputs": [
+          {
+            "description": "Query to be executed",
+            "type": "string",
+            "title": "scenario_name_io",
+            "default": ""
+          },
+          {
+            "description": "Dict with threshold tables as values.",
+            "title": "threshold_tables",
+            "default": ""
+          }
+        ],
+        "outputs": [
+          {
+            "type": "string",
+            "title": "tool_output"
+          }
+        ],
+        "requires_confirmation": false
+      }
+    },
+    "7f59b074-39af-4efa-a714-7d0b89886a3f": {
+      "component_type": "LlmNode",
+      "id": "7f59b074-39af-4efa-a714-7d0b89886a3f",
+      "name": "reformulation_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [
+        {
+          "type": "string",
+          "title": "tables_io"
+        },
+        {
+          "type": "string",
+          "title": "threshold_table_io"
+        },
+        {
+          "type": "string",
+          "title": "statement_io"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "string",
+          "title": "output"
+        }
+      ],
+      "branches": [
+        "next"
+      ],
+      "llm_config": {
+        "$component_ref": "93f51f5d-9b28-430c-9762-cfc7dff016ed"
+      },
+      "prompt_template": "Assume we have a database composed of the following tables and metadata:\n{{tables_io}}\n\nYou are also given a table containing relevant thresholds and definitions:\n{{threshold_table_io}}\n\nThe following is a statement that may be vague, ambiguous, or subjective.\nYour task: Reformulate the statement as a clear, specific, and measurable yes/no question that verifies whether the described event actually occurs in the database.\nUse as much information as possible from the schema and thresholds table to clarify ambiguity.\nIMPORTANT:\n- All quantifications, thresholds, and explicit definitions for vague or subjective terms are ALWAYS included in the thresholds and definitions table; you must locate and use the precise value or definition for these in your reformulated question. Never leave such terms vague or unquantified, and never use (to clarify-n) for any threshold or definition that can be found in the thresholds table.\n- The (to clarify-n) tag should be used ONLY for terms, actions, or references that CANNOT be defined or checked using the database schema and provided thresholds table, such as information about business/customer history or any details not available in the database.\n- In your reformulated question, you cannot assume further access to the thresholds table or any variable names from it.\n- Use the actual table and column names from the schema.\n- If a condition, term, or aspect of the original statement cannot be checked, measured, or operationalized using ONLY the available schema and explicit threshold values (i.e., it requires human judgment, future action, or information outside the database), add a unique numbered '(to clarify-1)', '(to clarify-2)', etc., tag immediately after it in your question. Start at 1 and increment for each such term or condition.\n- This includes any reference to actions or decisions outside the database (such as 'should', 'requires review', etc.)\u2014these must also be tagged for clarification.\n- Present EVERY condition as a BULLET POINT, even if there is only one condition.\n- Do NOT use any other formatting\u2014EVERY condition must appear as a bullet point and numbered '(to clarify-n)' tags must be used for ambiguous, subjective, or non-operationalizable terms as above.\n- Your reformulated question should be simple for an agent that will directly use it to access the database to answer.\n- Explain in detail why you marked a condition as to-clarify: mention the candidate thresholds or options you considered, and explain why you could not decide on one.\n\nHere is the original statement: {{statement_io}}\n\nYour output should be in the below format:\nThoughts: <thoughts before reformulating the given statement>\nReformulated question: <A clear, specific, yes/no-style question that expresses EACH condition as a bullet point for easy identification. Use '(to clarify-1)', '(to clarify-2)', etc., after any uncheckable, subjective, or non-operationalizable condition or term, incrementing the number for each occurrence.>\n"
+    },
+    "93f51f5d-9b28-430c-9762-cfc7dff016ed": {
+      "component_type": "OpenAiConfig",
+      "id": "93f51f5d-9b28-430c-9762-cfc7dff016ed",
+      "name": "llm_8f2232b5__auto",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "default_generation_parameters": {},
+      "model_id": "o3"
+    },
+    "f2d6dd7f-4432-45fd-9a0e-520a4e195e10": {
+      "component_type": "ToolNode",
+      "id": "f2d6dd7f-4432-45fd-9a0e-520a4e195e10",
+      "name": "reformulated_question_extraction_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [
+        {
+          "type": "string",
+          "title": "text"
+        },
+        {
+          "type": "string",
+          "title": "regex_pattern",
+          "default": "Reformulated question:\\s*((?:.|\\n)*)"
+        },
+        {
+          "type": "boolean",
+          "title": "return_first_match_only",
+          "default": true
+        }
+      ],
+      "outputs": [
+        {
+          "type": "string",
+          "title": "output",
+          "default": ""
+        }
+      ],
+      "branches": [
+        "next"
+      ],
+      "tool": {
+        "component_type": "ServerTool",
+        "id": "a1612108-45ed-4321-8e7c-603056ac75e5",
+        "name": "regex_extraction",
+        "description": "Regex extraction",
+        "metadata": {
+          "__metadata_info__": {}
+        },
+        "inputs": [
+          {
+            "type": "string",
+            "title": "text"
+          },
+          {
+            "type": "string",
+            "title": "regex_pattern",
+            "default": "Reformulated question:\\s*((?:.|\\n)*)"
+          },
+          {
+            "type": "boolean",
+            "title": "return_first_match_only",
+            "default": true
+          }
+        ],
+        "outputs": [
+          {
+            "type": "string",
+            "title": "output",
+            "default": ""
+          }
+        ],
+        "requires_confirmation": false
+      }
+    },
+    "a05fbe8b-4f3e-443d-af9b-5fdac5a94377": {
+      "component_type": "ToolNode",
+      "id": "a05fbe8b-4f3e-443d-af9b-5fdac5a94377",
+      "name": "is_clarification_needed_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [
+        {
+          "type": "string",
+          "title": "input_text"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "string",
+          "title": "exist_clarify_tag"
+        }
+      ],
+      "branches": [
+        "next"
+      ],
+      "tool": {
+        "component_type": "ServerTool",
+        "id": "24a5fa84-74c2-41e4-84bb-85c75e4c835f",
+        "name": "find_clarify_tag",
+        "description": "Check whether clarification is needed by looking for (to clarify-X) tags",
+        "metadata": {
+          "__metadata_info__": {}
+        },
+        "inputs": [
+          {
+            "type": "string",
+            "title": "input_text"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "string",
+            "title": "exist_clarify_tag"
+          }
+        ],
+        "requires_confirmation": false
+      }
+    },
+    "c7e468c9-029c-4793-a4f3-2e371462f379": {
+      "component_type": "BranchingNode",
+      "id": "c7e468c9-029c-4793-a4f3-2e371462f379",
+      "name": "is_clarification_needed_branching_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [
+        {
+          "description": "Next branch name in the flow",
+          "type": "string",
+          "title": "next_step_name",
+          "default": "default"
+        }
+      ],
+      "outputs": [],
+      "branches": [
+        "default",
+        "no_clarification"
+      ],
+      "mapping": {
+        "no_clarification": "no_clarification"
+      }
+    },
+    "8d927854-af46-47d0-a73f-2489871713a5": {
+      "component_type": "LlmNode",
+      "id": "8d927854-af46-47d0-a73f-2489871713a5",
+      "name": "questioning_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [
+        {
+          "type": "string",
+          "title": "tables_io"
+        },
+        {
+          "type": "string",
+          "title": "statement_io"
+        },
+        {
+          "type": "string",
+          "title": "reformulated_question_io"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "string",
+          "title": "output"
+        }
+      ],
+      "branches": [
+        "next"
+      ],
+      "llm_config": {
+        "$component_ref": "5889ff2b-879e-4064-8007-b3723bc06eb5"
+      },
+      "prompt_template": "You are assisting with clarifying ambiguous or uncheckable conditions in a database investigation.\n\nHere is the database schema and relevant metadata:\n{{tables_io}}\n\nHere is the original red flag statement:\n{{statement_io}}\n\nHere is a reformulated question based on the red flag statement, where any condition that could not be operationalized is marked with a unique numbered '(to clarify-1)', '(to clarify-2)', etc. tag:\n{{reformulated_question_io}}\n\nYour task:\n- Briefly write your thoughts on whether the reformulated question contains any conditions marked with '(to clarify-X)', and if so, what they imply for further investigation.\n- Read the reformulated question and identify every condition marked with a '(to clarify-X)' tag.\n- For each such condition, generate a single clear and concise question that would help clarify or make that condition precise; the condition can be a piece of information that is not available in the database, use the partial information you have if you do in the question to make it more straight.\n- Use details from the schema, the reformulated question, and the original red flag statement to make your clarification questions as specific as possible.\n- Always output in the following format:\nthoughts: <your brief thoughts here>\nQuestions :\n1. <clarification question>\n2. <clarification question>\n...and so on, one question for each '(to clarify-X)' in the reformulated question.\n\nIf there are no '(to clarify-X)' tags present, write your thoughts and under 'Questions :' output '(NO QUESTION)'.\n"
+    },
+    "5889ff2b-879e-4064-8007-b3723bc06eb5": {
+      "component_type": "OpenAiConfig",
+      "id": "5889ff2b-879e-4064-8007-b3723bc06eb5",
+      "name": "llm_f9707fab__auto",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "default_generation_parameters": {},
+      "model_id": "gpt-4.1-mini"
+    },
+    "26cddc52-0b16-49ab-8041-5eccca604dbe": {
+      "component_type": "ToolNode",
+      "id": "26cddc52-0b16-49ab-8041-5eccca604dbe",
+      "name": "is_undetermined_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [
+        {
+          "description": "Clarifying Question for the Red flag.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "clarification_question",
+          "default": []
+        },
+        {
+          "description": "RAG attempted answer, '0' means that answer wasn't provided by RAG.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "clarification_answer",
+          "default": []
+        },
+        {
+          "description": "LLM attempted answer, '0' means that answer wasn't provided by LLM.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "llm_clarification_answer",
+          "default": []
+        }
+      ],
+      "outputs": [
+        {
+          "type": "boolean",
+          "title": "is_undetermined"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "clarification_questions"
+        },
+        {
+          "type": "boolean",
+          "title": "successful_reformulation"
+        }
+      ],
+      "branches": [
+        "next"
+      ],
+      "tool": {
+        "component_type": "ServerTool",
+        "id": "2ea23e35-b550-4d40-a65c-4e8ce8e920b8",
+        "name": "is_undetermined",
+        "description": "Bundles clarifying question with RAG answer.",
+        "metadata": {
+          "__metadata_info__": {}
+        },
+        "inputs": [
+          {
+            "description": "Clarifying Question for the Red flag.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "clarification_question",
+            "default": []
+          },
+          {
+            "description": "RAG attempted answer, '0' means that answer wasn't provided by RAG.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "clarification_answer",
+            "default": []
+          },
+          {
+            "description": "LLM attempted answer, '0' means that answer wasn't provided by LLM.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "llm_clarification_answer",
+            "default": []
+          }
+        ],
+        "outputs": [
+          {
+            "type": "boolean",
+            "title": "is_undetermined"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "clarification_questions"
+          },
+          {
+            "type": "boolean",
+            "title": "successful_reformulation"
+          }
+        ],
+        "requires_confirmation": false
+      }
+    },
+    "a5659de6-210e-4373-b770-89f051f38c13": {
+      "component_type": "ToolNode",
+      "id": "a5659de6-210e-4373-b770-89f051f38c13",
+      "name": "questions_extraction_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [
+        {
+          "type": "string",
+          "title": "prompt_output"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "question_list"
+        }
+      ],
+      "branches": [
+        "next"
+      ],
+      "tool": {
+        "component_type": "ServerTool",
+        "id": "3199b6f9-c306-4faf-b8f8-6734598c8d8d",
+        "name": "extract_q",
+        "description": "retrieve from memory info to answer the question",
+        "metadata": {
+          "__metadata_info__": {}
+        },
+        "inputs": [
+          {
+            "description": "prompt output",
+            "type": "string",
+            "title": "prompt_output",
+            "default": ""
+          }
+        ],
+        "outputs": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "question_list"
+          }
+        ],
+        "requires_confirmation": false
+      }
+    },
+    "c14f5179-9c56-497f-9773-e84c006423a6": {
+      "component_type": "MapNode",
+      "id": "c14f5179-9c56-497f-9773-e84c006423a6",
+      "name": "user_asking_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [
+        {
+          "title": "iterated_question_io",
+          "anyOf": [
+            {
+              "type": "string",
+              "title": "question_io"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "title": "question_io"
+              }
+            }
+          ]
+        },
+        {
+          "title": "iterated_statement_io",
+          "anyOf": [
+            {
+              "type": "string",
+              "title": "statement_io"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "title": "statement_io"
+              }
+            }
+          ]
+        },
+        {
+          "title": "iterated_tables_io",
+          "anyOf": [
+            {
+              "type": "string",
+              "title": "tables_io"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "title": "tables_io"
+              }
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "title": "collected_q_regex_output",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "title": "q_regex_output",
+            "default": ""
+          }
+        },
+        {
+          "title": "collected_clarification",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "title": "clarification"
+          }
+        },
+        {
+          "title": "collected_answer_question",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "title": "answer_question"
+          }
+        }
+      ],
+      "branches": [
+        "next"
+      ],
+      "subflow": {
+        "component_type": "Flow",
+        "id": "4addeec6-fcda-4fff-864f-ce4cd400fa68",
+        "name": "flow_738127c6__auto",
+        "description": "",
+        "metadata": {
+          "__metadata_info__": {}
+        },
+        "inputs": [
+          {
+            "type": "string",
+            "title": "question_io"
+          },
+          {
+            "type": "string",
+            "title": "statement_io"
+          },
+          {
+            "type": "string",
+            "title": "tables_io"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "string",
+            "title": "rag_result"
+          },
+          {
+            "type": "string",
+            "title": "q_regex_output",
+            "default": ""
+          },
+          {
+            "type": "string",
+            "title": "clarification"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "search_result"
+          },
+          {
+            "type": "string",
+            "title": "answer_question"
+          }
+        ],
+        "start_node": {
+          "$component_ref": "a3edbcea-f83e-4406-b38b-4b20028bcf3e"
+        },
+        "nodes": [
+          {
+            "$component_ref": "a3edbcea-f83e-4406-b38b-4b20028bcf3e"
+          },
+          {
+            "$component_ref": "fa7a65de-df58-4eba-8785-feed33859a82"
+          },
+          {
+            "$component_ref": "58659887-b5aa-40eb-bbf0-05770f76794e"
+          },
+          {
+            "$component_ref": "511c032a-24ea-4079-961e-c72b32da505d"
+          },
+          {
+            "$component_ref": "ee8e4ef2-0c4d-4f16-9222-124079cdfce4"
+          },
+          {
+            "$component_ref": "4f7d7c67-570d-498e-94c6-9cdb92d04c1c"
+          },
+          {
+            "$component_ref": "3a1d7015-cdab-4a0f-944f-c3b3f451b63b"
+          },
+          {
+            "$component_ref": "7079b6d1-d237-4a31-bf7e-f3c6c4917674"
+          },
+          {
+            "$component_ref": "919be10a-a5a4-489a-9eba-68572258172c"
+          },
+          {
+            "$component_ref": "82c4f345-5149-454e-a36f-1461eb84fab6"
+          }
+        ],
+        "control_flow_connections": [
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "83a47044-d822-469e-8e2b-584ec7d6659d",
+            "name": "start_step_to_retrieval_execution_step_control_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "from_node": {
+              "$component_ref": "a3edbcea-f83e-4406-b38b-4b20028bcf3e"
+            },
+            "from_branch": null,
+            "to_node": {
+              "$component_ref": "fa7a65de-df58-4eba-8785-feed33859a82"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "ff64ad5e-d2b2-4510-841d-3cf8e5387dce",
+            "name": "retrieval_execution_step_to_format_rag_result_step_control_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "from_node": {
+              "$component_ref": "fa7a65de-df58-4eba-8785-feed33859a82"
+            },
+            "from_branch": null,
+            "to_node": {
+              "$component_ref": "58659887-b5aa-40eb-bbf0-05770f76794e"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "12521a94-5606-4f0f-9cbe-efda08adc06a",
+            "name": "format_rag_result_step_to_answering_trial_step_control_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "from_node": {
+              "$component_ref": "58659887-b5aa-40eb-bbf0-05770f76794e"
+            },
+            "from_branch": null,
+            "to_node": {
+              "$component_ref": "511c032a-24ea-4079-961e-c72b32da505d"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "120cdc28-fc19-4658-a80d-9ef3a14d4cba",
+            "name": "answering_trial_step_to_decision_extraction_step_control_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "from_node": {
+              "$component_ref": "511c032a-24ea-4079-961e-c72b32da505d"
+            },
+            "from_branch": null,
+            "to_node": {
+              "$component_ref": "ee8e4ef2-0c4d-4f16-9222-124079cdfce4"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "4414bf32-ee9b-4fce-b560-5aa798bce785",
+            "name": "decision_extraction_step_to_branching_step_control_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "from_node": {
+              "$component_ref": "ee8e4ef2-0c4d-4f16-9222-124079cdfce4"
+            },
+            "from_branch": null,
+            "to_node": {
+              "$component_ref": "4f7d7c67-570d-498e-94c6-9cdb92d04c1c"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "b120275b-e5f2-4336-b5fc-b9bd08e896e7",
+            "name": "branching_step_to_auto_input_step_control_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "from_node": {
+              "$component_ref": "4f7d7c67-570d-498e-94c6-9cdb92d04c1c"
+            },
+            "from_branch": "ask_user",
+            "to_node": {
+              "$component_ref": "3a1d7015-cdab-4a0f-944f-c3b3f451b63b"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "8537fa3b-29cf-4db5-8adf-922a03e2f414",
+            "name": "auto_input_step_to_create_clarification_step_control_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "from_node": {
+              "$component_ref": "3a1d7015-cdab-4a0f-944f-c3b3f451b63b"
+            },
+            "from_branch": null,
+            "to_node": {
+              "$component_ref": "7079b6d1-d237-4a31-bf7e-f3c6c4917674"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "84e05c55-a5df-492e-b707-5710a8c581c2",
+            "name": "create_clarification_step_to_output_message_control_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "from_node": {
+              "$component_ref": "7079b6d1-d237-4a31-bf7e-f3c6c4917674"
+            },
+            "from_branch": null,
+            "to_node": {
+              "$component_ref": "919be10a-a5a4-489a-9eba-68572258172c"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "38985a9f-7da4-4a2f-8ce6-18da404a7c5c",
+            "name": "branching_step_to_create_clarification_step_control_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "from_node": {
+              "$component_ref": "4f7d7c67-570d-498e-94c6-9cdb92d04c1c"
+            },
+            "from_branch": "default",
+            "to_node": {
+              "$component_ref": "7079b6d1-d237-4a31-bf7e-f3c6c4917674"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "cef0d2c5-ab46-440f-ab54-3de40affeeb0",
+            "name": "output_message_to_None End node_control_flow_edge",
+            "description": null,
+            "metadata": {},
+            "from_node": {
+              "$component_ref": "919be10a-a5a4-489a-9eba-68572258172c"
+            },
+            "from_branch": null,
+            "to_node": {
+              "$component_ref": "82c4f345-5149-454e-a36f-1461eb84fab6"
+            }
+          }
+        ],
+        "data_flow_connections": [
+          {
+            "component_type": "DataFlowEdge",
+            "id": "35dab81a-cedb-48f9-b635-182141ec0902",
+            "name": "start_step_question_io_to_retrieval_execution_step_user_question_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "a3edbcea-f83e-4406-b38b-4b20028bcf3e"
+            },
+            "source_output": "question_io",
+            "destination_node": {
+              "$component_ref": "fa7a65de-df58-4eba-8785-feed33859a82"
+            },
+            "destination_input": "user_question"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "1722eb28-2cd6-437e-b12a-3aa3be3c3276",
+            "name": "retrieval_execution_step_search_result_to_format_rag_result_step_rag_result_io_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "fa7a65de-df58-4eba-8785-feed33859a82"
+            },
+            "source_output": "search_result",
+            "destination_node": {
+              "$component_ref": "58659887-b5aa-40eb-bbf0-05770f76794e"
+            },
+            "destination_input": "rag_result_io"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "3955841f-02d1-470b-aba5-059118ae70dd",
+            "name": "format_rag_result_step_rag_result_to_answering_trial_step_rag_result_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "58659887-b5aa-40eb-bbf0-05770f76794e"
+            },
+            "source_output": "rag_result",
+            "destination_node": {
+              "$component_ref": "511c032a-24ea-4079-961e-c72b32da505d"
+            },
+            "destination_input": "rag_result"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "fff87279-3d0c-430a-aa62-56382d962ae2",
+            "name": "start_step_question_io_to_answering_trial_step_question_io_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "a3edbcea-f83e-4406-b38b-4b20028bcf3e"
+            },
+            "source_output": "question_io",
+            "destination_node": {
+              "$component_ref": "511c032a-24ea-4079-961e-c72b32da505d"
+            },
+            "destination_input": "question_io"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "a5814837-ae68-493b-a574-1ae78351108a",
+            "name": "start_step_statement_io_to_answering_trial_step_statement_io_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "a3edbcea-f83e-4406-b38b-4b20028bcf3e"
+            },
+            "source_output": "statement_io",
+            "destination_node": {
+              "$component_ref": "511c032a-24ea-4079-961e-c72b32da505d"
+            },
+            "destination_input": "statement_io"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "dc38207d-a3ad-48ff-9e2e-c887cab4a4f2",
+            "name": "answering_trial_step_answer_question_to_decision_extraction_step_text_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "511c032a-24ea-4079-961e-c72b32da505d"
+            },
+            "source_output": "answer_question",
+            "destination_node": {
+              "$component_ref": "ee8e4ef2-0c4d-4f16-9222-124079cdfce4"
+            },
+            "destination_input": "text"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "8d922302-d6c7-4bae-9e3c-da7eb30d89e5",
+            "name": "decision_extraction_step_q_regex_output_to_create_clarification_step_answer_question_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "ee8e4ef2-0c4d-4f16-9222-124079cdfce4"
+            },
+            "source_output": "q_regex_output",
+            "destination_node": {
+              "$component_ref": "7079b6d1-d237-4a31-bf7e-f3c6c4917674"
+            },
+            "destination_input": "answer_question"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "3fbfc803-fa16-481d-ac8f-a46aff080e13",
+            "name": "decision_extraction_step_q_regex_output_to_branching_step_next_step_name_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "ee8e4ef2-0c4d-4f16-9222-124079cdfce4"
+            },
+            "source_output": "q_regex_output",
+            "destination_node": {
+              "$component_ref": "4f7d7c67-570d-498e-94c6-9cdb92d04c1c"
+            },
+            "destination_input": "next_step_name"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "694cc971-c46e-456c-ba48-59ce89b548c8",
+            "name": "start_step_question_io_to_create_clarification_step_question_io_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "a3edbcea-f83e-4406-b38b-4b20028bcf3e"
+            },
+            "source_output": "question_io",
+            "destination_node": {
+              "$component_ref": "7079b6d1-d237-4a31-bf7e-f3c6c4917674"
+            },
+            "destination_input": "question_io"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "eddb676b-50f9-4086-ac94-4d1bdbafb24b",
+            "name": "auto_input_step_answer_question_to_create_clarification_step_answer_question_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "3a1d7015-cdab-4a0f-944f-c3b3f451b63b"
+            },
+            "source_output": "answer_question",
+            "destination_node": {
+              "$component_ref": "7079b6d1-d237-4a31-bf7e-f3c6c4917674"
+            },
+            "destination_input": "answer_question"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "7bfdb88d-44a7-41d9-a1d6-2f95db0a9e6b",
+            "name": "create_clarification_step_clarification_to_output_message_clarification_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "7079b6d1-d237-4a31-bf7e-f3c6c4917674"
+            },
+            "source_output": "clarification",
+            "destination_node": {
+              "$component_ref": "919be10a-a5a4-489a-9eba-68572258172c"
+            },
+            "destination_input": "clarification"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "0f1be59e-7ad1-440d-802d-55a061bf8699",
+            "name": "format_rag_result_step_rag_result_to_None End node_rag_result_data_flow_edge",
+            "description": null,
+            "metadata": {},
+            "source_node": {
+              "$component_ref": "58659887-b5aa-40eb-bbf0-05770f76794e"
+            },
+            "source_output": "rag_result",
+            "destination_node": {
+              "$component_ref": "82c4f345-5149-454e-a36f-1461eb84fab6"
+            },
+            "destination_input": "rag_result"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "3749364f-1357-4f5a-a64f-8e83b0669b61",
+            "name": "decision_extraction_step_q_regex_output_to_None End node_q_regex_output_data_flow_edge",
+            "description": null,
+            "metadata": {},
+            "source_node": {
+              "$component_ref": "ee8e4ef2-0c4d-4f16-9222-124079cdfce4"
+            },
+            "source_output": "q_regex_output",
+            "destination_node": {
+              "$component_ref": "82c4f345-5149-454e-a36f-1461eb84fab6"
+            },
+            "destination_input": "q_regex_output"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "10194311-1fa4-42be-bf2a-f8f40fde2e52",
+            "name": "create_clarification_step_clarification_to_None End node_clarification_data_flow_edge",
+            "description": null,
+            "metadata": {},
+            "source_node": {
+              "$component_ref": "7079b6d1-d237-4a31-bf7e-f3c6c4917674"
+            },
+            "source_output": "clarification",
+            "destination_node": {
+              "$component_ref": "82c4f345-5149-454e-a36f-1461eb84fab6"
+            },
+            "destination_input": "clarification"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "21250be5-76bc-4df5-83f5-a237edea7812",
+            "name": "retrieval_execution_step_search_result_to_None End node_search_result_data_flow_edge",
+            "description": null,
+            "metadata": {},
+            "source_node": {
+              "$component_ref": "fa7a65de-df58-4eba-8785-feed33859a82"
+            },
+            "source_output": "search_result",
+            "destination_node": {
+              "$component_ref": "82c4f345-5149-454e-a36f-1461eb84fab6"
+            },
+            "destination_input": "search_result"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "63baddbf-2f1b-47e9-8efc-746e55255b1c",
+            "name": "answering_trial_step_answer_question_to_None End node_answer_question_data_flow_edge",
+            "description": null,
+            "metadata": {},
+            "source_node": {
+              "$component_ref": "511c032a-24ea-4079-961e-c72b32da505d"
+            },
+            "source_output": "answer_question",
+            "destination_node": {
+              "$component_ref": "82c4f345-5149-454e-a36f-1461eb84fab6"
+            },
+            "destination_input": "answer_question"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "fe69e5bf-4c6a-40e0-bf8d-f869673392ce",
+            "name": "auto_input_step_answer_question_to_None End node_answer_question_data_flow_edge",
+            "description": null,
+            "metadata": {},
+            "source_node": {
+              "$component_ref": "3a1d7015-cdab-4a0f-944f-c3b3f451b63b"
+            },
+            "source_output": "answer_question",
+            "destination_node": {
+              "$component_ref": "82c4f345-5149-454e-a36f-1461eb84fab6"
+            },
+            "destination_input": "answer_question"
+          }
+        ],
+        "$referenced_components": {
+          "a3edbcea-f83e-4406-b38b-4b20028bcf3e": {
+            "component_type": "StartNode",
+            "id": "a3edbcea-f83e-4406-b38b-4b20028bcf3e",
+            "name": "start_step",
+            "description": "",
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "inputs": [
+              {
+                "type": "string",
+                "title": "question_io"
+              },
+              {
+                "type": "string",
+                "title": "statement_io"
+              },
+              {
+                "type": "string",
+                "title": "tables_io"
+              }
+            ],
+            "outputs": [
+              {
+                "type": "string",
+                "title": "question_io"
+              },
+              {
+                "type": "string",
+                "title": "statement_io"
+              },
+              {
+                "type": "string",
+                "title": "tables_io"
+              }
+            ],
+            "branches": [
+              "next"
+            ]
+          },
+          "fa7a65de-df58-4eba-8785-feed33859a82": {
+            "component_type": "ToolNode",
+            "id": "fa7a65de-df58-4eba-8785-feed33859a82",
+            "name": "retrieval_execution_step",
+            "description": "",
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "inputs": [
+              {
+                "type": "string",
+                "title": "user_question"
+              },
+              {
+                "type": "integer",
+                "title": "top_k",
+                "default": 3
+              },
+              {
+                "type": "number",
+                "title": "lower_limit",
+                "default": 0.0
+              }
+            ],
+            "outputs": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "search_result"
+              }
+            ],
+            "branches": [
+              "next"
+            ],
+            "tool": {
+              "component_type": "ServerTool",
+              "id": "66f9cc4b-6922-4fca-bef1-727e4ab3d310",
+              "name": "search",
+              "description": "Search in the memory and retrieve relevant information to answer the question",
+              "metadata": {
+                "__metadata_info__": {}
+              },
+              "inputs": [
+                {
+                  "type": "string",
+                  "title": "user_question"
+                },
+                {
+                  "type": "integer",
+                  "title": "top_k",
+                  "default": 3
+                },
+                {
+                  "type": "number",
+                  "title": "lower_limit",
+                  "default": 0.0
+                }
+              ],
+              "outputs": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "title": "search_result"
+                }
+              ],
+              "requires_confirmation": false
+            }
+          },
+          "58659887-b5aa-40eb-bbf0-05770f76794e": {
+            "component_type": "ToolNode",
+            "id": "58659887-b5aa-40eb-bbf0-05770f76794e",
+            "name": "format_rag_result_step",
+            "description": "",
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "inputs": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "rag_result_io"
+              }
+            ],
+            "outputs": [
+              {
+                "type": "string",
+                "title": "rag_result"
+              }
+            ],
+            "branches": [
+              "next"
+            ],
+            "tool": {
+              "component_type": "ServerTool",
+              "id": "21e2eb41-11e4-490f-80c7-79a0befc0590",
+              "name": "concatenate_rag_results",
+              "description": "Concatenate rag results",
+              "metadata": {
+                "__metadata_info__": {}
+              },
+              "inputs": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "title": "rag_result_io"
+                }
+              ],
+              "outputs": [
+                {
+                  "type": "string",
+                  "title": "rag_result"
+                }
+              ],
+              "requires_confirmation": false
+            }
+          },
+          "511c032a-24ea-4079-961e-c72b32da505d": {
+            "component_type": "LlmNode",
+            "id": "511c032a-24ea-4079-961e-c72b32da505d",
+            "name": "answering_trial_step",
+            "description": "",
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "inputs": [
+              {
+                "type": "string",
+                "title": "rag_result"
+              },
+              {
+                "type": "string",
+                "title": "question_io"
+              },
+              {
+                "type": "string",
+                "title": "statement_io"
+              }
+            ],
+            "outputs": [
+              {
+                "type": "string",
+                "title": "answer_question"
+              }
+            ],
+            "branches": [
+              "next"
+            ],
+            "llm_config": {
+              "$component_ref": "5889ff2b-879e-4064-8007-b3723bc06eb5"
+            },
+            "prompt_template": "=== RETRIEVED PLANS ===\n{{ rag_result }}\n=== END OF RETRIEVED PLANS ===\n\nQuestion: {{ question_io }}\nRed flag: {{ statement_io }}\n\nBased only on the above retrieved plans, answer the question as it relates to the red flag.\nUse only information present in the plans, focusing on relevant sequences of tasks.\nIf the answer cannot be found within these plans, **reply with only '0'**.\nAnswer:"
+          },
+          "ee8e4ef2-0c4d-4f16-9222-124079cdfce4": {
+            "component_type": "ToolNode",
+            "id": "ee8e4ef2-0c4d-4f16-9222-124079cdfce4",
+            "name": "decision_extraction_step",
+            "description": "",
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "inputs": [
+              {
+                "type": "string",
+                "title": "text"
+              },
+              {
+                "type": "string",
+                "title": "regex_pattern",
+                "default": "^[\\s\\S]*$"
+              },
+              {
+                "type": "boolean",
+                "title": "return_first_match_only",
+                "default": true
+              }
+            ],
+            "outputs": [
+              {
+                "type": "string",
+                "title": "q_regex_output",
+                "default": ""
+              }
+            ],
+            "branches": [
+              "next"
+            ],
+            "tool": {
+              "component_type": "ServerTool",
+              "id": "5835de53-3d85-4090-a7ac-27e35459bb41",
+              "name": "regex_extraction",
+              "description": "Regex extraction",
+              "metadata": {
+                "__metadata_info__": {}
+              },
+              "inputs": [
+                {
+                  "type": "string",
+                  "title": "text"
+                },
+                {
+                  "type": "string",
+                  "title": "regex_pattern",
+                  "default": "^[\\s\\S]*$"
+                },
+                {
+                  "type": "boolean",
+                  "title": "return_first_match_only",
+                  "default": true
+                }
+              ],
+              "outputs": [
+                {
+                  "type": "string",
+                  "title": "q_regex_output",
+                  "default": ""
+                }
+              ],
+              "requires_confirmation": false
+            }
+          },
+          "4f7d7c67-570d-498e-94c6-9cdb92d04c1c": {
+            "component_type": "BranchingNode",
+            "id": "4f7d7c67-570d-498e-94c6-9cdb92d04c1c",
+            "name": "branching_step",
+            "description": "",
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "inputs": [
+              {
+                "type": "string",
+                "title": "next_step_name"
+              }
+            ],
+            "outputs": [],
+            "branches": [
+              "ask_user",
+              "default"
+            ],
+            "mapping": {
+              "0": "ask_user"
+            }
+          },
+          "3a1d7015-cdab-4a0f-944f-c3b3f451b63b": {
+            "component_type": "LlmNode",
+            "id": "3a1d7015-cdab-4a0f-944f-c3b3f451b63b",
+            "name": "auto_input_step",
+            "description": "",
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "inputs": [
+              {
+                "description": "\"statement_io\" input variable for the template",
+                "type": "string",
+                "title": "statement_io"
+              },
+              {
+                "description": "\"question_io\" input variable for the template",
+                "type": "string",
+                "title": "question_io"
+              },
+              {
+                "description": "\"tables_io\" input variable for the template",
+                "type": "string",
+                "title": "tables_io"
+              }
+            ],
+            "outputs": [
+              {
+                "type": "string",
+                "title": "answer_question"
+              }
+            ],
+            "branches": [
+              "next"
+            ],
+            "llm_config": {
+              "$component_ref": "5889ff2b-879e-4064-8007-b3723bc06eb5"
+            },
+            "prompt_template": "\nFor the financial red flag {{ statement_io }}\nDraft a short, plausible response to the clarifying question:\n\n{{ question_io }}.\n\nIf answering the question requires specifying where to find information in a table, your answer must comply with this schema:\n\n{{ tables_io }}\n\nResponses must be realistic, with exact values (e.g., \u201c3 days\u201d instead of \u201ctimeframe_window\u201d), leaving no room for clarification. You should only answer with a direct response to the question without additional explanations. Do not generate any SQL query examples.\nThe answer you give must be actionable given the above schema. If it cannot be operationalized because it would require information that is not present anywhere in the schema, **reply with only '0'**.\nAnswer:\n"
+          },
+          "7079b6d1-d237-4a31-bf7e-f3c6c4917674": {
+            "component_type": "ToolNode",
+            "id": "7079b6d1-d237-4a31-bf7e-f3c6c4917674",
+            "name": "create_clarification_step",
+            "description": "",
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "inputs": [
+              {
+                "type": "string",
+                "title": "question_io"
+              },
+              {
+                "type": "string",
+                "title": "answer_question"
+              }
+            ],
+            "outputs": [
+              {
+                "type": "string",
+                "title": "clarification"
+              }
+            ],
+            "branches": [
+              "next"
+            ],
+            "tool": {
+              "component_type": "ServerTool",
+              "id": "655d6749-8732-4ac3-85e2-1930d12efafc",
+              "name": "create_clarification",
+              "description": "Create clarification",
+              "metadata": {
+                "__metadata_info__": {}
+              },
+              "inputs": [
+                {
+                  "type": "string",
+                  "title": "question_io"
+                },
+                {
+                  "type": "string",
+                  "title": "answer_question"
+                }
+              ],
+              "outputs": [
+                {
+                  "type": "string",
+                  "title": "clarification"
+                }
+              ],
+              "requires_confirmation": false
+            }
+          },
+          "919be10a-a5a4-489a-9eba-68572258172c": {
+            "component_type": "OutputMessageNode",
+            "id": "919be10a-a5a4-489a-9eba-68572258172c",
+            "name": "output_message",
+            "description": "",
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "inputs": [
+              {
+                "description": "\"clarification\" input variable for the template",
+                "type": "string",
+                "title": "clarification"
+              }
+            ],
+            "outputs": [],
+            "branches": [
+              "next"
+            ],
+            "message": "{{ clarification }}"
+          },
+          "82c4f345-5149-454e-a36f-1461eb84fab6": {
+            "component_type": "EndNode",
+            "id": "82c4f345-5149-454e-a36f-1461eb84fab6",
+            "name": "None End node",
+            "description": "End node representing all transitions to None in the WayFlow flow",
+            "metadata": {},
+            "inputs": [
+              {
+                "type": "string",
+                "title": "rag_result"
+              },
+              {
+                "type": "string",
+                "title": "q_regex_output",
+                "default": ""
+              },
+              {
+                "type": "string",
+                "title": "clarification"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "search_result"
+              },
+              {
+                "type": "string",
+                "title": "answer_question"
+              }
+            ],
+            "outputs": [
+              {
+                "type": "string",
+                "title": "rag_result"
+              },
+              {
+                "type": "string",
+                "title": "q_regex_output",
+                "default": ""
+              },
+              {
+                "type": "string",
+                "title": "clarification"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "search_result"
+              },
+              {
+                "type": "string",
+                "title": "answer_question"
+              }
+            ],
+            "branches": [],
+            "branch_name": "next"
+          }
+        }
+      },
+      "reducers": {
+        "clarification": "append",
+        "q_regex_output": "append",
+        "answer_question": "append"
+      }
+    },
+    "a90651cc-d885-430d-8ec6-eb27d8fedc94": {
+      "component_type": "ToolNode",
+      "id": "a90651cc-d885-430d-8ec6-eb27d8fedc94",
+      "name": "concatenate_clarifications_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [
+        {
+          "type": "string",
+          "title": "clarifications_io"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "string",
+          "title": "clarifications"
+        }
+      ],
+      "branches": [
+        "next"
+      ],
+      "tool": {
+        "component_type": "ServerTool",
+        "id": "1ac6b44d-17b1-432b-8a0e-7cb930592fa0",
+        "name": "concatenate_clarifications",
+        "description": "Concatenate clarifications",
+        "metadata": {
+          "__metadata_info__": {}
+        },
+        "inputs": [
+          {
+            "type": "string",
+            "title": "clarifications_io"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "string",
+            "title": "clarifications"
+          }
+        ],
+        "requires_confirmation": false
+      }
+    },
+    "b4c143e8-2a74-4cf5-abef-74ee187f2fb8": {
+      "component_type": "LlmNode",
+      "id": "b4c143e8-2a74-4cf5-abef-74ee187f2fb8",
+      "name": "final_reformulation_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [
+        {
+          "type": "string",
+          "title": "statement_io"
+        },
+        {
+          "type": "string",
+          "title": "reformulated_question_io"
+        },
+        {
+          "type": "string",
+          "title": "clarifications"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "string",
+          "title": "output"
+        }
+      ],
+      "branches": [
+        "next"
+      ],
+      "llm_config": {
+        "$component_ref": "93f51f5d-9b28-430c-9762-cfc7dff016ed"
+      },
+      "prompt_template": "You are assisting in refining ambiguous monitoring statements for database checking.\n\nHere is:\n- The original red flag statement.\n- The reformulated question (in bullet points; any ambiguous/uncheckable condition is marked with a '(to clarify-X)' tag).\n- For each '(to clarify-X)' tag, there is a clarification answer.\n\nYour task:\n- For every bullet point with a '(to clarify-X)' tag, use the corresponding clarification answer to rewrite that bullet with the now precise information. Remove the '(to clarify-X)' tag.\n- For bullet points without a '(to clarify-X)' tag, leave them unchanged.\n- Output the complete set of clarified bullet points.\n- Do not mention the original tags or that clarifications were applied\u2014just output improved bullet points.\n- Use only bullet point formatting.\n\nRed flag statement:\n{{ statement_io }}\n\nReformulated question:\n{{ reformulated_question_io }}\n\nClarification answers:\n{{ clarifications }}\n\nOutput the clarified reformulated question in exactly the same format as the first reformulated question: start with the line \"Reformulated question:\" followed by the reformulated question.\n"
+    },
+    "c879d25c-614e-4ed1-bc0d-80dd8dfe0d4d": {
+      "component_type": "ToolNode",
+      "id": "c879d25c-614e-4ed1-bc0d-80dd8dfe0d4d",
+      "name": "final_extraction_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [
+        {
+          "type": "string",
+          "title": "text"
+        },
+        {
+          "type": "string",
+          "title": "regex_pattern",
+          "default": "Reformulated question:\\s*((?:.|\\n)*)"
+        },
+        {
+          "type": "boolean",
+          "title": "return_first_match_only",
+          "default": true
+        }
+      ],
+      "outputs": [
+        {
+          "type": "string",
+          "title": "output",
+          "default": ""
+        }
+      ],
+      "branches": [
+        "next"
+      ],
+      "tool": {
+        "component_type": "ServerTool",
+        "id": "6df06ed9-4e0d-4d92-a370-b899ec21fee9",
+        "name": "regex_extraction",
+        "description": "Regex extraction",
+        "metadata": {
+          "__metadata_info__": {}
+        },
+        "inputs": [
+          {
+            "type": "string",
+            "title": "text"
+          },
+          {
+            "type": "string",
+            "title": "regex_pattern",
+            "default": "Reformulated question:\\s*((?:.|\\n)*)"
+          },
+          {
+            "type": "boolean",
+            "title": "return_first_match_only",
+            "default": true
+          }
+        ],
+        "outputs": [
+          {
+            "type": "string",
+            "title": "output",
+            "default": ""
+          }
+        ],
+        "requires_confirmation": false
+      }
+    },
+    "593c85ee-dacc-4ffd-8eff-f8ecfeca2ab5": {
+      "component_type": "EndNode",
+      "id": "593c85ee-dacc-4ffd-8eff-f8ecfeca2ab5",
+      "name": "None End node",
+      "description": "End node representing all transitions to None in the WayFlow flow",
+      "metadata": {},
+      "inputs": [
+        {
+          "type": "boolean",
+          "title": "successful_reformulation"
+        },
+        {
+          "type": "string",
+          "title": "exist_clarify_tag"
+        },
+        {
+          "type": "string",
+          "title": "output",
+          "default": ""
+        },
+        {
+          "type": "boolean",
+          "title": "is_undetermined"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "clarification_questions"
+        },
+        {
+          "type": "string",
+          "title": "tool_output"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "boolean",
+          "title": "successful_reformulation"
+        },
+        {
+          "type": "string",
+          "title": "exist_clarify_tag"
+        },
+        {
+          "type": "string",
+          "title": "output",
+          "default": ""
+        },
+        {
+          "type": "boolean",
+          "title": "is_undetermined"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "clarification_questions"
+        },
+        {
+          "type": "string",
+          "title": "tool_output"
+        }
+      ],
+      "branches": [],
+      "branch_name": "next"
+    }
+  },
+  "agentspec_version": "25.4.2"
+}

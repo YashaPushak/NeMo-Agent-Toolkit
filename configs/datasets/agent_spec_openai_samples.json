@@ -1,0 +1,6 @@
+[
+  { "id": "1", "prompt": "Say hello and include today's date." },
+  { "id": "2", "prompt": "What's the current time? Keep it brief." },
+  { "id": "3", "prompt": "Reply with a short greeting." }
+]
+

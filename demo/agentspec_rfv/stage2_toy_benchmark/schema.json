@@ -1,0 +1,63 @@
+{
+  "tables": [
+    {
+      "name": "ACCT",
+      "description": "Account information with key features including account type, opening date, and balance.",
+      "columns": [
+        { "name": "ACCT_INTRL_ID", "description": "Unique account number" },
+        { "name": "ACCT_TYPE1_CD", "description": "Type of account (e.g. checking, savings)" },
+        { "name": "ACCT_OPEN_DT", "description": "Date the account was opened" },
+        { "name": "JRSDCN_CD", "description": "Jurisdiction code for the account" },
+        { "name": "LAST_ACTVY_DT", "description": "Last activity date" },
+        { "name": "ACCT_STAT_CD", "description": "Current status of the account (e.g. active, inactive)" },
+        { "name": "PRMRY_PRDCT_TYPE_CD", "description": "Primary product type associated with the account" },
+        { "name": "YEAR_CLSG_ACCT_BAL_AM", "description": "Year-end closing balance of the account" }
+      ]
+    },
+    {
+      "name": "CUST_ACCT",
+      "description": "Links between customers and accounts with key features including customer and account IDs.",
+      "columns": [
+        { "name": "CUST_INTRL_ID", "description": "Customer ID linked to the account" },
+        { "name": "ACCT_INTRL_ID", "description": "Account ID linked to the customer" }
+      ]
+    },
+    {
+      "name": "WIRE_TRXN",
+      "description": "Wire transaction information with key features including transaction date, amount, and parties involved.",
+      "columns": [
+        { "name": "TRXN_INTRL_REF_ID", "description": "Unique transaction reference ID" },
+        { "name": "TRXN_EXCTN_DT", "description": "Date the transaction was executed" },
+        { "name": "TRXN_BASE_AM", "description": "Transaction amount" },
+        { "name": "ORIG_NM", "description": "Name of the transaction originator (sender)" },
+        { "name": "ORIG_ACCT_ID", "description": "Account ID of the transaction originator" },
+        { "name": "ORIG_CRNCY_CD", "description": "Currency code of the transaction originator" },
+        { "name": "ORIG_RES_CNTRY_CD", "description": "Originator country code" },
+        { "name": "BENEF_NM", "description": "Name of the transaction beneficiary (receiver)" },
+        { "name": "BENEF_ACCT_ID", "description": "Account ID of the transaction beneficiary" },
+        { "name": "BENEF_CRNCY_CD", "description": "Currency code of the transaction beneficiary" },
+        { "name": "BENEF_RES_CNTRY_CD", "description": "Country Code of Beneficiary" },
+        { "name": "FRGN_TRXN_FL", "description": "Foreign Transaction Flag (Y/N)" }
+      ]
+    },
+    {
+      "name": "CASH_TRXN",
+      "description": "Cash transaction information with key features including transaction date, amount, and location.",
+      "columns": [
+        { "name": "TRXN_INTRL_REF_ID", "description": "Unique transaction reference ID" },
+        { "name": "TRXN_EXCTN_DT", "description": "Date the transaction was executed" },
+        { "name": "TRXN_BASE_AM", "description": "Transaction amount" },
+        { "name": "ACCT_INTRL_ID", "description": "Account ID linked to the customer" },
+        { "name": "TRXN_LOC_NM", "description": "Location where the transaction occurred" },
+        { "name": "TRXN_CHANL_CD", "description": "Channel used for the transaction (e.g. online, ATM, branch)" },
+        { "name": "DBT_CDT_CD", "description": "Debit or Credit Code (C or D)" }
+      ]
+    }
+  ],
+  "relationships": [
+    { "source": "ACCT", "targets": ["CUST_ACCT"] },
+    { "source": "WIRE_TRXN", "targets": ["ACCT", "CUST_ACCT"] },
+    { "source": "CASH_TRXN", "targets": ["ACCT", "CUST_ACCT"] },
+    { "source": "CUST_ACCT", "targets": ["ACCT"] }
+  ]
+}

@@ -1,0 +1,36 @@
+functions: {}
+
+llms:
+  openai_chat:
+    _type: openai
+    model: gpt-4.1-mini
+    temperature: 0.2
+
+workflow: 
+  _type: agent_spec
+  description: RFV Stage 2 via Agent Spec (OpenAI)
+  verbose: true
+  max_history: 10
+  llm_name: openai_chat
+  agentspec_path: demo/agentspec_rfv/red_flag_agentspec_stage2.json
+  tool_registry_factory: demo.agentspec_rfv.nat_tool_registry:stage2_factory   # Returns a dict mapping tool names to implementations (python callables)
+  input_provider_factory: demo.agentspec_rfv.nat_input_provider:stage2_inputs  # Provides StartNode inputs derived from your question + dataset
+  #
+  # Input preview (provided by input_provider_factory):
+  #
+  # inputs:
+  #   tables_io (a schema summary string showing tables/columns): |
+  #     Tables:
+  #       - ACCT(ACCT_INTRL_ID, ACCT_TYPE1_CD, ACCT_OPEN_DT, JRSDCN_CD, LAST_ACTVY_DT, ACCT_STAT_CD, PRMRY_PRDCT_TYPE_CD, YEAR_CLSG_ACCT_BAL_AM)
+  #       - CUST_ACCT(CUST_INTRL_ID, ACCT_INTRL_ID)
+  #       - WIRE_TRXN(TRXN_INTRL_REF_ID, TRXN_EXCTN_DT, TRXN_BASE_AM, ORIG_ACCT_ID, BENEF_ACCT_ID, FRGN_TRXN_FL, ...)
+  #       - CASH_TRXN(TRXN_INTRL_REF_ID, TRXN_EXCTN_DT, TRXN_BASE_AM, ACCT_INTRL_ID, TRXN_LOC_NM, TRXN_CHANL_CD, DBT_CDT_CD)
+  #   statement_io (the user’s question string): "Were international funds transfers for customer CUTRSTFTNAC-101 at least 1.2 times more frequent in December 2015 than in November 2015?"
+  #   data_tables (CSV header previews for the four tables):
+  #     WIRE_TRXN: "TRXN_INTRL_REF_ID,TRXN_EXCTN_DT,TRXN_BASE_AM,ORIG_ACCT_ID,BENEF_ACCT_ID,FRGN_TRXN_FL\n..."
+  #     CUST_ACCT:  "CUST_INTRL_ID,ACCT_INTRL_ID\n..."
+  #     ACCT:       "ACCT_INTRL_ID,ACCT_TYPE1_CD,ACCT_OPEN_DT,JRSDCN_CD,...\n..."
+  #     CASH_TRXN:  "TRXN_INTRL_REF_ID,TRXN_EXCTN_DT,TRXN_BASE_AM,ACCT_INTRL_ID,TRXN_LOC_NM,...\n..."
+  #
+  # Dataset control:
+  #   export RFV_PROJECT_DIR=demo/agentspec_rfv/stage2_toy_benchmark

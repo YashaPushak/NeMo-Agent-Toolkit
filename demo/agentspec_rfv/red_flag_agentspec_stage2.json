@@ -1,0 +1,4171 @@
+{
+  "component_type": "Flow",
+  "id": "a3357e38-b7a8-4523-addc-146668095cec",
+  "name": "flow_f142e0e2__auto",
+  "description": "",
+  "metadata": {
+    "__metadata_info__": {}
+  },
+  "inputs": [
+    {
+      "description": "Task Definition",
+      "type": "string",
+      "title": "tables_io"
+    },
+    {
+      "description": "Q",
+      "type": "string",
+      "title": "statement_io"
+    },
+    {
+      "description": "Tables with content about transcations, accounts etc.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "key_type": {
+        "type": "string"
+      },
+      "title": "data_tables"
+    }
+  ],
+  "outputs": [
+    {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "output",
+      "default": []
+    },
+    {
+      "description": "output of tool",
+      "type": "string",
+      "title": "tool_output"
+    }
+  ],
+  "start_node": {
+    "$component_ref": "47522649-6e17-4169-bb18-83007ad67e98"
+  },
+  "nodes": [
+    {
+      "$component_ref": "47522649-6e17-4169-bb18-83007ad67e98"
+    },
+    {
+      "$component_ref": "3485bbdd-a77a-4486-bb39-553f10032f9e"
+    },
+    {
+      "$component_ref": "2b94b595-5829-40f7-88e6-c77751d77128"
+    },
+    {
+      "$component_ref": "8296aa54-9eba-46d1-beb8-acd7f2524be5"
+    },
+    {
+      "$component_ref": "62f03875-b099-4711-bb51-6021aef9d434"
+    },
+    {
+      "$component_ref": "6092f634-d449-4621-b9f6-bcf0ce314bd9"
+    }
+  ],
+  "control_flow_connections": [
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "0cdd7c00-e29e-4107-9921-9700a464711e",
+      "name": "start_step_to_llm_plan_generation_step_control_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "from_node": {
+        "$component_ref": "47522649-6e17-4169-bb18-83007ad67e98"
+      },
+      "from_branch": null,
+      "to_node": {
+        "$component_ref": "3485bbdd-a77a-4486-bb39-553f10032f9e"
+      }
+    },
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "4beb5d58-f9d9-47b7-9c14-9f5c32b50fa0",
+      "name": "llm_plan_generation_step_to_plan_extraction_step_control_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "from_node": {
+        "$component_ref": "3485bbdd-a77a-4486-bb39-553f10032f9e"
+      },
+      "from_branch": null,
+      "to_node": {
+        "$component_ref": "2b94b595-5829-40f7-88e6-c77751d77128"
+      }
+    },
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "98ef2712-31cd-4366-8ec3-c67f2b915dd9",
+      "name": "plan_extraction_step_to_plan_execution_step_control_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "from_node": {
+        "$component_ref": "2b94b595-5829-40f7-88e6-c77751d77128"
+      },
+      "from_branch": null,
+      "to_node": {
+        "$component_ref": "8296aa54-9eba-46d1-beb8-acd7f2524be5"
+      }
+    },
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "f9d2d79e-1954-48fa-b769-55667c44a134",
+      "name": "plan_execution_step_to_output_step_control_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "from_node": {
+        "$component_ref": "8296aa54-9eba-46d1-beb8-acd7f2524be5"
+      },
+      "from_branch": null,
+      "to_node": {
+        "$component_ref": "62f03875-b099-4711-bb51-6021aef9d434"
+      }
+    },
+    {
+      "component_type": "ControlFlowEdge",
+      "id": "380b7489-fd4a-4b4a-9a0c-137ce26321cd",
+      "name": "output_step_to_None End node_control_flow_edge",
+      "description": null,
+      "metadata": {},
+      "from_node": {
+        "$component_ref": "62f03875-b099-4711-bb51-6021aef9d434"
+      },
+      "from_branch": null,
+      "to_node": {
+        "$component_ref": "6092f634-d449-4621-b9f6-bcf0ce314bd9"
+      }
+    }
+  ],
+  "data_flow_connections": [
+    {
+      "component_type": "DataFlowEdge",
+      "id": "9d441daf-4296-4ca3-8b77-1bed815be60c",
+      "name": "start_step_tables_io_to_llm_plan_generation_step_tables_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "47522649-6e17-4169-bb18-83007ad67e98"
+      },
+      "source_output": "tables_io",
+      "destination_node": {
+        "$component_ref": "3485bbdd-a77a-4486-bb39-553f10032f9e"
+      },
+      "destination_input": "tables_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "815d366b-50f2-4508-95d5-2f05c80967a7",
+      "name": "start_step_tables_io_to_plan_execution_step_iterated_tables_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "47522649-6e17-4169-bb18-83007ad67e98"
+      },
+      "source_output": "tables_io",
+      "destination_node": {
+        "$component_ref": "8296aa54-9eba-46d1-beb8-acd7f2524be5"
+      },
+      "destination_input": "iterated_tables_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "5a215129-c655-4bf3-b6b3-2c1015b828b5",
+      "name": "start_step_data_tables_to_plan_execution_step_iterated_data_tables_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "47522649-6e17-4169-bb18-83007ad67e98"
+      },
+      "source_output": "data_tables",
+      "destination_node": {
+        "$component_ref": "8296aa54-9eba-46d1-beb8-acd7f2524be5"
+      },
+      "destination_input": "iterated_data_tables"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "0049836c-f353-43f9-a55f-538831c1ab4f",
+      "name": "start_step_statement_io_to_llm_plan_generation_step_statement_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "47522649-6e17-4169-bb18-83007ad67e98"
+      },
+      "source_output": "statement_io",
+      "destination_node": {
+        "$component_ref": "3485bbdd-a77a-4486-bb39-553f10032f9e"
+      },
+      "destination_input": "statement_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "4ceca881-2383-4bb4-8a4c-5c00e925d971",
+      "name": "llm_plan_generation_step_output_to_plan_extraction_step_text_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "3485bbdd-a77a-4486-bb39-553f10032f9e"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "2b94b595-5829-40f7-88e6-c77751d77128"
+      },
+      "destination_input": "text"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "399b9d64-6e19-4d39-b34a-abe61b58f195",
+      "name": "plan_extraction_step_output_to_plan_execution_step_iterated_step_io_data_flow_edge",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "source_node": {
+        "$component_ref": "2b94b595-5829-40f7-88e6-c77751d77128"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "8296aa54-9eba-46d1-beb8-acd7f2524be5"
+      },
+      "destination_input": "iterated_step_io"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "f2cfb2c6-503c-4a2e-88f2-0ef8be4ef243",
+      "name": "plan_extraction_step_output_to_None End node_output_data_flow_edge",
+      "description": null,
+      "metadata": {},
+      "source_node": {
+        "$component_ref": "2b94b595-5829-40f7-88e6-c77751d77128"
+      },
+      "source_output": "output",
+      "destination_node": {
+        "$component_ref": "6092f634-d449-4621-b9f6-bcf0ce314bd9"
+      },
+      "destination_input": "output"
+    },
+    {
+      "component_type": "DataFlowEdge",
+      "id": "b7a80f75-3c9f-4b4c-a4e0-86f36e38092c",
+      "name": "output_step_tool_output_to_None End node_tool_output_data_flow_edge",
+      "description": null,
+      "metadata": {},
+      "source_node": {
+        "$component_ref": "62f03875-b099-4711-bb51-6021aef9d434"
+      },
+      "source_output": "tool_output",
+      "destination_node": {
+        "$component_ref": "6092f634-d449-4621-b9f6-bcf0ce314bd9"
+      },
+      "destination_input": "tool_output"
+    }
+  ],
+  "$referenced_components": {
+    "47522649-6e17-4169-bb18-83007ad67e98": {
+      "component_type": "StartNode",
+      "id": "47522649-6e17-4169-bb18-83007ad67e98",
+      "name": "start_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [
+        {
+          "description": "Task Definition",
+          "type": "string",
+          "title": "tables_io"
+        },
+        {
+          "description": "Q",
+          "type": "string",
+          "title": "statement_io"
+        },
+        {
+          "description": "Tables with content about transcations, accounts etc.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "key_type": {
+            "type": "string"
+          },
+          "title": "data_tables"
+        }
+      ],
+      "outputs": [
+        {
+          "description": "Task Definition",
+          "type": "string",
+          "title": "tables_io"
+        },
+        {
+          "description": "Q",
+          "type": "string",
+          "title": "statement_io"
+        },
+        {
+          "description": "Tables with content about transcations, accounts etc.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "key_type": {
+            "type": "string"
+          },
+          "title": "data_tables"
+        }
+      ],
+      "branches": [
+        "next"
+      ]
+    },
+    "3485bbdd-a77a-4486-bb39-553f10032f9e": {
+      "component_type": "LlmNode",
+      "id": "3485bbdd-a77a-4486-bb39-553f10032f9e",
+      "name": "llm_plan_generation_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [
+        {
+          "description": "Tables Schema",
+          "type": "string",
+          "title": "tables_io"
+        },
+        {
+          "description": "Red Flag",
+          "type": "string",
+          "title": "statement_io"
+        }
+      ],
+      "outputs": [
+        {
+          "description": "LLM's raw generation",
+          "type": "string",
+          "title": "output"
+        }
+      ],
+      "branches": [
+        "next"
+      ],
+      "llm_config": {
+        "$component_ref": "93f51f5d-9b28-430c-9762-cfc7dff016ed"
+      },
+      "prompt_template": "You are a **policy model**. Your job is to decide which modules to use, and in what order, to **answer a specific question** using a set of available modules.\nYou must return a **sequence of steps**. Each step should:\n- Use **one module**\n- Clearly describe what it does\n- Mention which **previous step(s)' output** it uses as input\n---\n\n- Rules:\n- Only focus on **answering the question**, nothing else\n- Use the **minimum number of tables** possible\n- Keep each step **simple** and **granular** \u2014 each module should do just one clear task\n---\n\n- Available Modules:\n- **Retriever**\nUse this module to retrieve and process data from predefined tables. It's responsible for all table-related operations like fetching, filtering, merging, or aggregating \u2014 **done in one simple SQL query**.\nThe Retriever can take multiple tables as input, but must return only **one table** as output. Only the Retriever can directly interact with tables.\n- **Informer**\nThe Informer acts as the bridge between the tables and the Executor. It takes the output from the Retriever and extracts the specific information needed \u2014 such as length, min/max values, specific entries, or any summarization.\nIt transforms structured table data into plain, readable text or simple values. If any information needs to be pulled or summarized from a table, **the Informer must handle it**, not the Executor.\n- **Executor**\nThis module performs logical decision making and thinking, it should be provided with the final data and it should use the data to make a decision. Unless it's the final answer, the executor shouldn't be provided with a table that can contain a lot of lines (conetxt window).\n---\n\n- In-context example\n**Question to answer:**\nAre there more than 4 international transactions transiting through the account(s) of the `CUST_INTRL_ID = ADACA342432` during the month of `04/07/2016`?\n**Your Output's format:**\nThoughts : thoughts here\nPlan :\n##[1. Retriever: Fetches accounts of the customer with CUST_INTRL_ID = 'ADACA342432'. %%INPUT:[]]##\n##[2. Retriever: Fetches transactions of those accounts from WIRE_TRXN. %%INPUT:[STEP1]]##\n##[3. Informer: Gets the number of international transactions using FRGN_TRXN_FL. %%INPUT:[STEP2]]##\n##[4. Executor: Checks if the number is greater than 4. %%INPUT:[STEP3]]##\n(like in the example, each step should be between ##[...]##, your tasks shouldn't include SQL queries they should be natural language tasks.)\n(Each step should be in one line, natural language, using table names if helpful, but do not instruct on details such as filtering or joining.)\n---\n\n- Available Tables:\n{{tables_io}}\n---\n\n- Question to Answer:\n{{statement_io}}\n"
+    },
+    "93f51f5d-9b28-430c-9762-cfc7dff016ed": {
+      "component_type": "OpenAiConfig",
+      "id": "93f51f5d-9b28-430c-9762-cfc7dff016ed",
+      "name": "llm_8f2232b5__auto",
+      "description": null,
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "default_generation_parameters": {},
+      "model_id": "o3"
+    },
+    "2b94b595-5829-40f7-88e6-c77751d77128": {
+      "component_type": "ToolNode",
+      "id": "2b94b595-5829-40f7-88e6-c77751d77128",
+      "name": "plan_extraction_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [
+        {
+          "type": "string",
+          "title": "text"
+        },
+        {
+          "type": "string",
+          "title": "regex_pattern",
+          "default": "##\\[((?:.|\\r?\\n)*?)\\]##"
+        },
+        {
+          "type": "boolean",
+          "title": "return_first_match_only",
+          "default": false
+        }
+      ],
+      "outputs": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "output",
+          "default": []
+        }
+      ],
+      "branches": [
+        "next"
+      ],
+      "tool": {
+        "component_type": "ServerTool",
+        "id": "31bac56e-5d80-43ca-9677-96b4368dbede",
+        "name": "regex_extraction",
+        "description": "Regex extraction",
+        "metadata": {
+          "__metadata_info__": {}
+        },
+        "inputs": [
+          {
+            "type": "string",
+            "title": "text"
+          },
+          {
+            "type": "string",
+            "title": "regex_pattern",
+            "default": "##\\[((?:.|\\r?\\n)*?)\\]##"
+          },
+          {
+            "type": "boolean",
+            "title": "return_first_match_only",
+            "default": false
+          }
+        ],
+        "outputs": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "title": "output",
+            "default": []
+          }
+        ],
+        "requires_confirmation": false
+      }
+    },
+    "8296aa54-9eba-46d1-beb8-acd7f2524be5": {
+      "component_type": "MapNode",
+      "id": "8296aa54-9eba-46d1-beb8-acd7f2524be5",
+      "name": "plan_execution_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [
+        {
+          "title": "iterated_step_io",
+          "anyOf": [
+            {
+              "description": "Task Definition",
+              "type": "string",
+              "title": "step_io"
+            },
+            {
+              "type": "array",
+              "items": {
+                "description": "Task Definition",
+                "type": "string",
+                "title": "step_io"
+              }
+            }
+          ]
+        },
+        {
+          "title": "iterated_tables_io",
+          "anyOf": [
+            {
+              "description": "Tables",
+              "type": "string",
+              "title": "tables_io"
+            },
+            {
+              "type": "array",
+              "items": {
+                "description": "Tables",
+                "type": "string",
+                "title": "tables_io"
+              }
+            }
+          ]
+        },
+        {
+          "title": "iterated_data_tables",
+          "anyOf": [
+            {
+              "description": "Tables with content about transcations, accounts etc.",
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "key_type": {
+                "type": "string"
+              },
+              "title": "data_tables"
+            },
+            {
+              "type": "array",
+              "items": {
+                "description": "Tables with content about transcations, accounts etc.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "key_type": {
+                  "type": "string"
+                },
+                "title": "data_tables"
+              }
+            }
+          ]
+        }
+      ],
+      "outputs": [],
+      "branches": [
+        "next"
+      ],
+      "subflow": {
+        "component_type": "Flow",
+        "id": "7afc60e6-5a7b-4e02-9174-386e5f5c7ef5",
+        "name": "flow_2b405d3b__auto",
+        "description": "",
+        "metadata": {
+          "__metadata_info__": {}
+        },
+        "inputs": [
+          {
+            "description": "Task Definition",
+            "type": "string",
+            "title": "step_io"
+          },
+          {
+            "description": "Tables",
+            "type": "string",
+            "title": "tables_io"
+          },
+          {
+            "description": "Tables with content about transcations, accounts etc.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "key_type": {
+              "type": "string"
+            },
+            "title": "data_tables"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "string",
+            "title": "output",
+            "default": ""
+          },
+          {
+            "type": "string",
+            "title": "tool_output",
+            "default": "Done"
+          }
+        ],
+        "start_node": {
+          "$component_ref": "1602ef46-e27f-4345-b150-7064980bb85e"
+        },
+        "nodes": [
+          {
+            "$component_ref": "1602ef46-e27f-4345-b150-7064980bb85e"
+          },
+          {
+            "$component_ref": "8ebd819c-04fd-4c03-8e69-355cff0e9dfd"
+          },
+          {
+            "$component_ref": "26d00234-7a79-4eb2-a82a-405a992c5e83"
+          },
+          {
+            "$component_ref": "d4562b06-c4ed-4234-be8b-ec2b72ab8975"
+          },
+          {
+            "$component_ref": "9d28ae2e-c42f-4894-bcad-e6b62b757283"
+          },
+          {
+            "$component_ref": "06d3e826-8cce-411a-bc98-0d172ab8b726"
+          },
+          {
+            "$component_ref": "191e4882-48ae-4f76-9fc3-05621532f868"
+          },
+          {
+            "$component_ref": "f97bf949-8aed-4a3e-9177-64c67a523e7d"
+          },
+          {
+            "$component_ref": "5d3e04b6-9721-43b7-8b94-78058d5bed96"
+          }
+        ],
+        "control_flow_connections": [
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "bf67580d-e712-4092-857c-cdddf7779019",
+            "name": "start_step_to_step_value_extraction_step_control_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "from_node": {
+              "$component_ref": "1602ef46-e27f-4345-b150-7064980bb85e"
+            },
+            "from_branch": null,
+            "to_node": {
+              "$component_ref": "8ebd819c-04fd-4c03-8e69-355cff0e9dfd"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "f0a1e0ae-5e44-4495-8733-aa1e4f6a0d47",
+            "name": "step_value_extraction_step_to_module_extraction_step_control_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "from_node": {
+              "$component_ref": "8ebd819c-04fd-4c03-8e69-355cff0e9dfd"
+            },
+            "from_branch": null,
+            "to_node": {
+              "$component_ref": "26d00234-7a79-4eb2-a82a-405a992c5e83"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "4fa78252-d427-470f-92a5-915d2752c080",
+            "name": "module_extraction_step_to_task_extraction_step_control_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "from_node": {
+              "$component_ref": "26d00234-7a79-4eb2-a82a-405a992c5e83"
+            },
+            "from_branch": null,
+            "to_node": {
+              "$component_ref": "d4562b06-c4ed-4234-be8b-ec2b72ab8975"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "2b284a23-9d3d-4a9b-8244-a048592b2fe8",
+            "name": "task_extraction_step_to_branching_step_control_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "from_node": {
+              "$component_ref": "d4562b06-c4ed-4234-be8b-ec2b72ab8975"
+            },
+            "from_branch": null,
+            "to_node": {
+              "$component_ref": "9d28ae2e-c42f-4894-bcad-e6b62b757283"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "74416727-db93-41a3-9331-823d9deacd04",
+            "name": "branching_step_to_retriever_execution_step_control_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "from_node": {
+              "$component_ref": "9d28ae2e-c42f-4894-bcad-e6b62b757283"
+            },
+            "from_branch": "retriever_execution",
+            "to_node": {
+              "$component_ref": "06d3e826-8cce-411a-bc98-0d172ab8b726"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "a3402921-d307-407e-99d9-7abdcf82b263",
+            "name": "branching_step_to_informer_execution_step_control_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "from_node": {
+              "$component_ref": "9d28ae2e-c42f-4894-bcad-e6b62b757283"
+            },
+            "from_branch": "informer_execution",
+            "to_node": {
+              "$component_ref": "191e4882-48ae-4f76-9fc3-05621532f868"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "6a1b959e-b157-4ab9-8d80-8e9b0f4ce723",
+            "name": "branching_step_to_executor_execution_step_control_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "from_node": {
+              "$component_ref": "9d28ae2e-c42f-4894-bcad-e6b62b757283"
+            },
+            "from_branch": "execution",
+            "to_node": {
+              "$component_ref": "f97bf949-8aed-4a3e-9177-64c67a523e7d"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "2544f81d-0e0a-459d-8f58-9f648ed559f9",
+            "name": "branching_step_to_retriever_execution_step_control_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "from_node": {
+              "$component_ref": "9d28ae2e-c42f-4894-bcad-e6b62b757283"
+            },
+            "from_branch": "default",
+            "to_node": {
+              "$component_ref": "06d3e826-8cce-411a-bc98-0d172ab8b726"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "210ebaa7-dac4-43ef-abe0-340d639edf75",
+            "name": "retriever_execution_step_to_None End node_control_flow_edge",
+            "description": null,
+            "metadata": {},
+            "from_node": {
+              "$component_ref": "06d3e826-8cce-411a-bc98-0d172ab8b726"
+            },
+            "from_branch": null,
+            "to_node": {
+              "$component_ref": "5d3e04b6-9721-43b7-8b94-78058d5bed96"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "7485d8db-f06f-4f09-ae51-03e02e5425d1",
+            "name": "informer_execution_step_to_None End node_control_flow_edge",
+            "description": null,
+            "metadata": {},
+            "from_node": {
+              "$component_ref": "191e4882-48ae-4f76-9fc3-05621532f868"
+            },
+            "from_branch": null,
+            "to_node": {
+              "$component_ref": "5d3e04b6-9721-43b7-8b94-78058d5bed96"
+            }
+          },
+          {
+            "component_type": "ControlFlowEdge",
+            "id": "363ea7c1-456e-407f-9573-98b08d371ce3",
+            "name": "executor_execution_step_to_None End node_control_flow_edge",
+            "description": null,
+            "metadata": {},
+            "from_node": {
+              "$component_ref": "f97bf949-8aed-4a3e-9177-64c67a523e7d"
+            },
+            "from_branch": null,
+            "to_node": {
+              "$component_ref": "5d3e04b6-9721-43b7-8b94-78058d5bed96"
+            }
+          }
+        ],
+        "data_flow_connections": [
+          {
+            "component_type": "DataFlowEdge",
+            "id": "019cb4b8-7205-4967-ac0b-97f6656a7056",
+            "name": "start_step_step_io_to_step_value_extraction_step_text_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "1602ef46-e27f-4345-b150-7064980bb85e"
+            },
+            "source_output": "step_io",
+            "destination_node": {
+              "$component_ref": "8ebd819c-04fd-4c03-8e69-355cff0e9dfd"
+            },
+            "destination_input": "text"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "be7ef7b2-0f16-4017-9513-a525e34d390a",
+            "name": "start_step_step_io_to_module_extraction_step_text_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "1602ef46-e27f-4345-b150-7064980bb85e"
+            },
+            "source_output": "step_io",
+            "destination_node": {
+              "$component_ref": "26d00234-7a79-4eb2-a82a-405a992c5e83"
+            },
+            "destination_input": "text"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "876f33fe-46ab-4e20-8f28-af863a1c6d4f",
+            "name": "start_step_step_io_to_task_extraction_step_text_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "1602ef46-e27f-4345-b150-7064980bb85e"
+            },
+            "source_output": "step_io",
+            "destination_node": {
+              "$component_ref": "d4562b06-c4ed-4234-be8b-ec2b72ab8975"
+            },
+            "destination_input": "text"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "2740256a-81c1-4ad7-8829-d2c760cdd2f9",
+            "name": "module_extraction_step_output_to_branching_step_next_step_name_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "26d00234-7a79-4eb2-a82a-405a992c5e83"
+            },
+            "source_output": "output",
+            "destination_node": {
+              "$component_ref": "9d28ae2e-c42f-4894-bcad-e6b62b757283"
+            },
+            "destination_input": "next_step_name"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "f802fc35-29f7-42be-baa3-afb8ed033cd1",
+            "name": "step_value_extraction_step_output_to_retriever_execution_step_step_value_extraction_io_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "8ebd819c-04fd-4c03-8e69-355cff0e9dfd"
+            },
+            "source_output": "output",
+            "destination_node": {
+              "$component_ref": "06d3e826-8cce-411a-bc98-0d172ab8b726"
+            },
+            "destination_input": "step_value_extraction_io"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "ea5dae35-97e5-4fc4-8aa6-6f09f4b1d546",
+            "name": "task_extraction_step_output_to_retriever_execution_step_task_extraction_io_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "d4562b06-c4ed-4234-be8b-ec2b72ab8975"
+            },
+            "source_output": "output",
+            "destination_node": {
+              "$component_ref": "06d3e826-8cce-411a-bc98-0d172ab8b726"
+            },
+            "destination_input": "task_extraction_io"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "3ad331ac-d158-4036-a5e3-bf7a9e4f7774",
+            "name": "start_step_tables_io_to_retriever_execution_step_tables_io_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "1602ef46-e27f-4345-b150-7064980bb85e"
+            },
+            "source_output": "tables_io",
+            "destination_node": {
+              "$component_ref": "06d3e826-8cce-411a-bc98-0d172ab8b726"
+            },
+            "destination_input": "tables_io"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "09537ac3-87ff-43b9-8e34-3deeb3eaa6c0",
+            "name": "step_value_extraction_step_output_to_informer_execution_step_step_value_extraction_io_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "8ebd819c-04fd-4c03-8e69-355cff0e9dfd"
+            },
+            "source_output": "output",
+            "destination_node": {
+              "$component_ref": "191e4882-48ae-4f76-9fc3-05621532f868"
+            },
+            "destination_input": "step_value_extraction_io"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "d3aa7e5a-fe54-4889-bde1-3b1eb8e97620",
+            "name": "task_extraction_step_output_to_informer_execution_step_task_extraction_io_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "d4562b06-c4ed-4234-be8b-ec2b72ab8975"
+            },
+            "source_output": "output",
+            "destination_node": {
+              "$component_ref": "191e4882-48ae-4f76-9fc3-05621532f868"
+            },
+            "destination_input": "task_extraction_io"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "803727ef-2379-4669-97a1-1742337e1820",
+            "name": "start_step_tables_io_to_informer_execution_step_tables_io_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "1602ef46-e27f-4345-b150-7064980bb85e"
+            },
+            "source_output": "tables_io",
+            "destination_node": {
+              "$component_ref": "191e4882-48ae-4f76-9fc3-05621532f868"
+            },
+            "destination_input": "tables_io"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "05a82ebf-e240-4b22-ab03-3dbc673e187c",
+            "name": "start_step_data_tables_to_informer_execution_step_data_tables_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "1602ef46-e27f-4345-b150-7064980bb85e"
+            },
+            "source_output": "data_tables",
+            "destination_node": {
+              "$component_ref": "191e4882-48ae-4f76-9fc3-05621532f868"
+            },
+            "destination_input": "data_tables"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "531f2594-7554-4df5-8b2a-6f8c1b181f5e",
+            "name": "step_value_extraction_step_output_to_executor_execution_step_step_value_extraction_io_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "8ebd819c-04fd-4c03-8e69-355cff0e9dfd"
+            },
+            "source_output": "output",
+            "destination_node": {
+              "$component_ref": "f97bf949-8aed-4a3e-9177-64c67a523e7d"
+            },
+            "destination_input": "step_value_extraction_io"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "46b30f39-a276-4752-ba4d-cba503f985c5",
+            "name": "task_extraction_step_output_to_executor_execution_step_task_extraction_io_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "d4562b06-c4ed-4234-be8b-ec2b72ab8975"
+            },
+            "source_output": "output",
+            "destination_node": {
+              "$component_ref": "f97bf949-8aed-4a3e-9177-64c67a523e7d"
+            },
+            "destination_input": "task_extraction_io"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "96a465d5-ebcc-444f-be9d-cf24b64e7c33",
+            "name": "start_step_tables_io_to_executor_execution_step_tables_io_data_flow_edge",
+            "description": null,
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "source_node": {
+              "$component_ref": "1602ef46-e27f-4345-b150-7064980bb85e"
+            },
+            "source_output": "tables_io",
+            "destination_node": {
+              "$component_ref": "f97bf949-8aed-4a3e-9177-64c67a523e7d"
+            },
+            "destination_input": "tables_io"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "fe134d8c-ae18-4064-b497-75a6782e91ff",
+            "name": "step_value_extraction_step_output_to_None End node_output_data_flow_edge",
+            "description": null,
+            "metadata": {},
+            "source_node": {
+              "$component_ref": "8ebd819c-04fd-4c03-8e69-355cff0e9dfd"
+            },
+            "source_output": "output",
+            "destination_node": {
+              "$component_ref": "5d3e04b6-9721-43b7-8b94-78058d5bed96"
+            },
+            "destination_input": "output"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "0e74a425-a01c-4ee1-b1eb-5abb4053e491",
+            "name": "module_extraction_step_output_to_None End node_output_data_flow_edge",
+            "description": null,
+            "metadata": {},
+            "source_node": {
+              "$component_ref": "26d00234-7a79-4eb2-a82a-405a992c5e83"
+            },
+            "source_output": "output",
+            "destination_node": {
+              "$component_ref": "5d3e04b6-9721-43b7-8b94-78058d5bed96"
+            },
+            "destination_input": "output"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "77ccb0f4-303b-4466-a582-3a59a14b2b7a",
+            "name": "task_extraction_step_output_to_None End node_output_data_flow_edge",
+            "description": null,
+            "metadata": {},
+            "source_node": {
+              "$component_ref": "d4562b06-c4ed-4234-be8b-ec2b72ab8975"
+            },
+            "source_output": "output",
+            "destination_node": {
+              "$component_ref": "5d3e04b6-9721-43b7-8b94-78058d5bed96"
+            },
+            "destination_input": "output"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "d09e241c-2683-4f05-a3e1-11929d070a62",
+            "name": "retriever_execution_step_output_to_None End node_output_data_flow_edge",
+            "description": null,
+            "metadata": {},
+            "source_node": {
+              "$component_ref": "06d3e826-8cce-411a-bc98-0d172ab8b726"
+            },
+            "source_output": "output",
+            "destination_node": {
+              "$component_ref": "5d3e04b6-9721-43b7-8b94-78058d5bed96"
+            },
+            "destination_input": "output"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "98ee8e50-17c7-4d61-9a0e-51b4ef4b23b1",
+            "name": "informer_execution_step_output_to_None End node_output_data_flow_edge",
+            "description": null,
+            "metadata": {},
+            "source_node": {
+              "$component_ref": "191e4882-48ae-4f76-9fc3-05621532f868"
+            },
+            "source_output": "output",
+            "destination_node": {
+              "$component_ref": "5d3e04b6-9721-43b7-8b94-78058d5bed96"
+            },
+            "destination_input": "output"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "72d10b8c-19a0-4324-8f27-bce4c2a13f08",
+            "name": "executor_execution_step_output_to_None End node_output_data_flow_edge",
+            "description": null,
+            "metadata": {},
+            "source_node": {
+              "$component_ref": "f97bf949-8aed-4a3e-9177-64c67a523e7d"
+            },
+            "source_output": "output",
+            "destination_node": {
+              "$component_ref": "5d3e04b6-9721-43b7-8b94-78058d5bed96"
+            },
+            "destination_input": "output"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "2d9d55a7-a3a9-47ba-abc6-71480893d348",
+            "name": "retriever_execution_step_tool_output_to_None End node_tool_output_data_flow_edge",
+            "description": null,
+            "metadata": {},
+            "source_node": {
+              "$component_ref": "06d3e826-8cce-411a-bc98-0d172ab8b726"
+            },
+            "source_output": "tool_output",
+            "destination_node": {
+              "$component_ref": "5d3e04b6-9721-43b7-8b94-78058d5bed96"
+            },
+            "destination_input": "tool_output"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "18cba67e-74d9-45d3-8d9a-15cc9c1d4fe9",
+            "name": "informer_execution_step_tool_output_to_None End node_tool_output_data_flow_edge",
+            "description": null,
+            "metadata": {},
+            "source_node": {
+              "$component_ref": "191e4882-48ae-4f76-9fc3-05621532f868"
+            },
+            "source_output": "tool_output",
+            "destination_node": {
+              "$component_ref": "5d3e04b6-9721-43b7-8b94-78058d5bed96"
+            },
+            "destination_input": "tool_output"
+          },
+          {
+            "component_type": "DataFlowEdge",
+            "id": "4be22026-865f-4b5e-baa5-fcdfa0557163",
+            "name": "executor_execution_step_tool_output_to_None End node_tool_output_data_flow_edge",
+            "description": null,
+            "metadata": {},
+            "source_node": {
+              "$component_ref": "f97bf949-8aed-4a3e-9177-64c67a523e7d"
+            },
+            "source_output": "tool_output",
+            "destination_node": {
+              "$component_ref": "5d3e04b6-9721-43b7-8b94-78058d5bed96"
+            },
+            "destination_input": "tool_output"
+          }
+        ],
+        "$referenced_components": {
+          "1602ef46-e27f-4345-b150-7064980bb85e": {
+            "component_type": "StartNode",
+            "id": "1602ef46-e27f-4345-b150-7064980bb85e",
+            "name": "start_step",
+            "description": "",
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "inputs": [
+              {
+                "description": "Task Definition",
+                "type": "string",
+                "title": "step_io"
+              },
+              {
+                "description": "Tables",
+                "type": "string",
+                "title": "tables_io"
+              },
+              {
+                "description": "Tables with content about transcations, accounts etc.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "key_type": {
+                  "type": "string"
+                },
+                "title": "data_tables"
+              }
+            ],
+            "outputs": [
+              {
+                "description": "Task Definition",
+                "type": "string",
+                "title": "step_io"
+              },
+              {
+                "description": "Tables",
+                "type": "string",
+                "title": "tables_io"
+              },
+              {
+                "description": "Tables with content about transcations, accounts etc.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "key_type": {
+                  "type": "string"
+                },
+                "title": "data_tables"
+              }
+            ],
+            "branches": [
+              "next"
+            ]
+          },
+          "8ebd819c-04fd-4c03-8e69-355cff0e9dfd": {
+            "component_type": "ToolNode",
+            "id": "8ebd819c-04fd-4c03-8e69-355cff0e9dfd",
+            "name": "step_value_extraction_step",
+            "description": "",
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "inputs": [
+              {
+                "type": "string",
+                "title": "text"
+              },
+              {
+                "type": "string",
+                "title": "regex_pattern",
+                "default": "^\\d+"
+              },
+              {
+                "type": "boolean",
+                "title": "return_first_match_only",
+                "default": true
+              }
+            ],
+            "outputs": [
+              {
+                "type": "string",
+                "title": "output",
+                "default": ""
+              }
+            ],
+            "branches": [
+              "next"
+            ],
+            "tool": {
+              "component_type": "ServerTool",
+              "id": "cbb959c0-98fe-4074-991e-efceb9ed7891",
+              "name": "regex_extraction",
+              "description": "Regex extraction",
+              "metadata": {
+                "__metadata_info__": {}
+              },
+              "inputs": [
+                {
+                  "type": "string",
+                  "title": "text"
+                },
+                {
+                  "type": "string",
+                  "title": "regex_pattern",
+                  "default": "^\\d+"
+                },
+                {
+                  "type": "boolean",
+                  "title": "return_first_match_only",
+                  "default": true
+                }
+              ],
+              "outputs": [
+                {
+                  "type": "string",
+                  "title": "output",
+                  "default": ""
+                }
+              ],
+              "requires_confirmation": false
+            }
+          },
+          "26d00234-7a79-4eb2-a82a-405a992c5e83": {
+            "component_type": "ToolNode",
+            "id": "26d00234-7a79-4eb2-a82a-405a992c5e83",
+            "name": "module_extraction_step",
+            "description": "",
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "inputs": [
+              {
+                "type": "string",
+                "title": "text"
+              },
+              {
+                "type": "string",
+                "title": "regex_pattern",
+                "default": "^\\d+\\.\\s*(\\w+)"
+              },
+              {
+                "type": "boolean",
+                "title": "return_first_match_only",
+                "default": true
+              }
+            ],
+            "outputs": [
+              {
+                "type": "string",
+                "title": "output",
+                "default": ""
+              }
+            ],
+            "branches": [
+              "next"
+            ],
+            "tool": {
+              "component_type": "ServerTool",
+              "id": "603ef1fd-21ec-43dd-808b-6770796c52b6",
+              "name": "regex_extraction",
+              "description": "Regex extraction",
+              "metadata": {
+                "__metadata_info__": {}
+              },
+              "inputs": [
+                {
+                  "type": "string",
+                  "title": "text"
+                },
+                {
+                  "type": "string",
+                  "title": "regex_pattern",
+                  "default": "^\\d+\\.\\s*(\\w+)"
+                },
+                {
+                  "type": "boolean",
+                  "title": "return_first_match_only",
+                  "default": true
+                }
+              ],
+              "outputs": [
+                {
+                  "type": "string",
+                  "title": "output",
+                  "default": ""
+                }
+              ],
+              "requires_confirmation": false
+            }
+          },
+          "d4562b06-c4ed-4234-be8b-ec2b72ab8975": {
+            "component_type": "ToolNode",
+            "id": "d4562b06-c4ed-4234-be8b-ec2b72ab8975",
+            "name": "task_extraction_step",
+            "description": "",
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "inputs": [
+              {
+                "type": "string",
+                "title": "text"
+              },
+              {
+                "type": "string",
+                "title": "regex_pattern",
+                "default": "^\\d+\\.\\s*\\w+:\\s*((?:.|\\r?\\n)*?)%%INPUT:"
+              },
+              {
+                "type": "boolean",
+                "title": "return_first_match_only",
+                "default": true
+              }
+            ],
+            "outputs": [
+              {
+                "type": "string",
+                "title": "output",
+                "default": ""
+              }
+            ],
+            "branches": [
+              "next"
+            ],
+            "tool": {
+              "component_type": "ServerTool",
+              "id": "c2b7c011-e6bd-43ab-bedb-4c79b4e330c9",
+              "name": "regex_extraction",
+              "description": "Regex extraction",
+              "metadata": {
+                "__metadata_info__": {}
+              },
+              "inputs": [
+                {
+                  "type": "string",
+                  "title": "text"
+                },
+                {
+                  "type": "string",
+                  "title": "regex_pattern",
+                  "default": "^\\d+\\.\\s*\\w+:\\s*((?:.|\\r?\\n)*?)%%INPUT:"
+                },
+                {
+                  "type": "boolean",
+                  "title": "return_first_match_only",
+                  "default": true
+                }
+              ],
+              "outputs": [
+                {
+                  "type": "string",
+                  "title": "output",
+                  "default": ""
+                }
+              ],
+              "requires_confirmation": false
+            }
+          },
+          "9d28ae2e-c42f-4894-bcad-e6b62b757283": {
+            "component_type": "BranchingNode",
+            "id": "9d28ae2e-c42f-4894-bcad-e6b62b757283",
+            "name": "branching_step",
+            "description": "",
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "inputs": [
+              {
+                "type": "string",
+                "title": "next_step_name"
+              }
+            ],
+            "outputs": [],
+            "branches": [
+              "default",
+              "execution",
+              "informer_execution",
+              "retriever_execution"
+            ],
+            "mapping": {
+              "Retriever": "retriever_execution",
+              "Informer": "informer_execution",
+              "Executor": "execution"
+            }
+          },
+          "06d3e826-8cce-411a-bc98-0d172ab8b726": {
+            "component_type": "FlowNode",
+            "id": "06d3e826-8cce-411a-bc98-0d172ab8b726",
+            "name": "retriever_execution_step",
+            "description": "",
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "inputs": [
+              {
+                "description": "Rank of Step",
+                "type": "string",
+                "title": "step_value_extraction_io"
+              },
+              {
+                "description": "Task Definition",
+                "type": "string",
+                "title": "task_extraction_io"
+              },
+              {
+                "description": "tables",
+                "type": "string",
+                "title": "tables_io"
+              }
+            ],
+            "outputs": [
+              {
+                "type": "string",
+                "title": "extra_requirements_io"
+              },
+              {
+                "type": "string",
+                "title": "output",
+                "default": ""
+              },
+              {
+                "type": "string",
+                "title": "tool_output",
+                "default": "Done"
+              },
+              {
+                "type": "string",
+                "title": "rendered_previous_queries"
+              }
+            ],
+            "branches": [
+              "next"
+            ],
+            "subflow": {
+              "component_type": "Flow",
+              "id": "9645c914-1c66-4422-b953-5de5bafd30dd",
+              "name": "flow_7aa4c1ac__auto",
+              "description": "",
+              "metadata": {
+                "__metadata_info__": {}
+              },
+              "inputs": [
+                {
+                  "description": "Rank of Step",
+                  "type": "string",
+                  "title": "step_value_extraction_io"
+                },
+                {
+                  "description": "Task Definition",
+                  "type": "string",
+                  "title": "task_extraction_io"
+                },
+                {
+                  "description": "tables",
+                  "type": "string",
+                  "title": "tables_io"
+                }
+              ],
+              "outputs": [
+                {
+                  "type": "string",
+                  "title": "extra_requirements_io"
+                },
+                {
+                  "type": "string",
+                  "title": "output",
+                  "default": ""
+                },
+                {
+                  "type": "string",
+                  "title": "tool_output",
+                  "default": "Done"
+                },
+                {
+                  "type": "string",
+                  "title": "rendered_previous_queries"
+                }
+              ],
+              "start_node": {
+                "$component_ref": "18dfc152-0d9c-4158-bd90-04ffc0ddb2e7"
+              },
+              "nodes": [
+                {
+                  "$component_ref": "18dfc152-0d9c-4158-bd90-04ffc0ddb2e7"
+                },
+                {
+                  "$component_ref": "7cde648c-a820-4fab-8773-9d908b4e3ffc"
+                },
+                {
+                  "$component_ref": "28b35e40-5216-419a-838c-88db033e55b4"
+                },
+                {
+                  "$component_ref": "9fd42961-38ad-4bd9-885e-0c289a013248"
+                },
+                {
+                  "$component_ref": "17bf8a59-59dc-40f1-b745-b21d6f0f995c"
+                },
+                {
+                  "$component_ref": "8571ceae-dc7e-4e89-a87a-150d73ede783"
+                },
+                {
+                  "$component_ref": "e39b7aa3-837c-4326-8292-f1ce7228093b"
+                },
+                {
+                  "$component_ref": "91e414cb-ed5d-4c7b-9c63-1d15ff208be9"
+                }
+              ],
+              "control_flow_connections": [
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "a4e14e51-2986-45a3-abb2-254d7825150d",
+                  "name": "start_step_to_retrieve_conetxt_step_control_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "from_node": {
+                    "$component_ref": "18dfc152-0d9c-4158-bd90-04ffc0ddb2e7"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "7cde648c-a820-4fab-8773-9d908b4e3ffc"
+                  }
+                },
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "5ce17b14-0998-49bf-96e3-1d393e7f31b6",
+                  "name": "retrieve_conetxt_step_to_query_context_rendering_step_control_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "from_node": {
+                    "$component_ref": "7cde648c-a820-4fab-8773-9d908b4e3ffc"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "28b35e40-5216-419a-838c-88db033e55b4"
+                  }
+                },
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "e3652fc2-7d3e-4d47-9c29-c93fce5a8acf",
+                  "name": "query_context_rendering_step_to_extra_requirements_rendering_step_control_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "from_node": {
+                    "$component_ref": "28b35e40-5216-419a-838c-88db033e55b4"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "9fd42961-38ad-4bd9-885e-0c289a013248"
+                  }
+                },
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "626fe55b-b4d5-4b5e-bc5b-a1f094c3b99d",
+                  "name": "extra_requirements_rendering_step_to_llm_query_generation_step_control_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "from_node": {
+                    "$component_ref": "9fd42961-38ad-4bd9-885e-0c289a013248"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "17bf8a59-59dc-40f1-b745-b21d6f0f995c"
+                  }
+                },
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "339b57e3-66c9-45ba-9bfb-42ff7388aa82",
+                  "name": "llm_query_generation_step_to_query_extraction_step_control_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "from_node": {
+                    "$component_ref": "17bf8a59-59dc-40f1-b745-b21d6f0f995c"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "8571ceae-dc7e-4e89-a87a-150d73ede783"
+                  }
+                },
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "0881c210-120e-42cc-88c3-9e3096773a2b",
+                  "name": "query_extraction_step_to_query_context_update_step_control_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "from_node": {
+                    "$component_ref": "8571ceae-dc7e-4e89-a87a-150d73ede783"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "e39b7aa3-837c-4326-8292-f1ce7228093b"
+                  }
+                },
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "aa06a999-be65-4b69-b89a-4fc8f0107252",
+                  "name": "query_context_update_step_to_None End node_control_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "from_node": {
+                    "$component_ref": "e39b7aa3-837c-4326-8292-f1ce7228093b"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "91e414cb-ed5d-4c7b-9c63-1d15ff208be9"
+                  }
+                }
+              ],
+              "data_flow_connections": [
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "cd24317b-2cd5-4e4f-b352-bab447d5d403",
+                  "name": "start_step_step_value_extraction_io_to_query_context_rendering_step_step_value_extraction_io_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "18dfc152-0d9c-4158-bd90-04ffc0ddb2e7"
+                  },
+                  "source_output": "step_value_extraction_io",
+                  "destination_node": {
+                    "$component_ref": "28b35e40-5216-419a-838c-88db033e55b4"
+                  },
+                  "destination_input": "step_value_extraction_io"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "b513c859-4396-4274-8202-d6b98d7c1e0a",
+                  "name": "start_step_step_value_extraction_io_to_extra_requirements_rendering_step_step_value_extraction_io_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "18dfc152-0d9c-4158-bd90-04ffc0ddb2e7"
+                  },
+                  "source_output": "step_value_extraction_io",
+                  "destination_node": {
+                    "$component_ref": "9fd42961-38ad-4bd9-885e-0c289a013248"
+                  },
+                  "destination_input": "step_value_extraction_io"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "6ce3dabb-7e94-4267-96b9-2838be265cf6",
+                  "name": "extra_requirements_rendering_step_extra_requirements_io_to_llm_query_generation_step_extra_requirements_io_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "9fd42961-38ad-4bd9-885e-0c289a013248"
+                  },
+                  "source_output": "extra_requirements_io",
+                  "destination_node": {
+                    "$component_ref": "17bf8a59-59dc-40f1-b745-b21d6f0f995c"
+                  },
+                  "destination_input": "extra_requirements_io"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "188b1c20-f0ae-4986-8d09-a7e89a008fb3",
+                  "name": "start_step_task_extraction_io_to_llm_query_generation_step_task_extraction_io_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "18dfc152-0d9c-4158-bd90-04ffc0ddb2e7"
+                  },
+                  "source_output": "task_extraction_io",
+                  "destination_node": {
+                    "$component_ref": "17bf8a59-59dc-40f1-b745-b21d6f0f995c"
+                  },
+                  "destination_input": "task_extraction_io"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "54ffffa7-6249-418c-ad36-d5bd090e6deb",
+                  "name": "start_step_tables_io_to_llm_query_generation_step_tables_io_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "18dfc152-0d9c-4158-bd90-04ffc0ddb2e7"
+                  },
+                  "source_output": "tables_io",
+                  "destination_node": {
+                    "$component_ref": "17bf8a59-59dc-40f1-b745-b21d6f0f995c"
+                  },
+                  "destination_input": "tables_io"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "4d9b8f28-844c-45f9-a5ed-0f62a19f405e",
+                  "name": "retrieve_conetxt_step_tool_output_to_query_context_rendering_step_retrieve_context_io_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "7cde648c-a820-4fab-8773-9d908b4e3ffc"
+                  },
+                  "source_output": "tool_output",
+                  "destination_node": {
+                    "$component_ref": "28b35e40-5216-419a-838c-88db033e55b4"
+                  },
+                  "destination_input": "retrieve_context_io"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "e4926381-3c10-432b-8121-68d5001e9b8b",
+                  "name": "query_context_rendering_step_rendered_previous_queries_to_llm_query_generation_step_rendered_previous_queries_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "28b35e40-5216-419a-838c-88db033e55b4"
+                  },
+                  "source_output": "rendered_previous_queries",
+                  "destination_node": {
+                    "$component_ref": "17bf8a59-59dc-40f1-b745-b21d6f0f995c"
+                  },
+                  "destination_input": "rendered_previous_queries"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "a3f19335-cd72-4ed0-889c-4cfeaa13db89",
+                  "name": "llm_query_generation_step_output_to_query_extraction_step_text_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "17bf8a59-59dc-40f1-b745-b21d6f0f995c"
+                  },
+                  "source_output": "output",
+                  "destination_node": {
+                    "$component_ref": "8571ceae-dc7e-4e89-a87a-150d73ede783"
+                  },
+                  "destination_input": "text"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "5774067b-2e38-4e4b-a480-edd7f990627f",
+                  "name": "query_extraction_step_output_to_query_context_update_step_content_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "8571ceae-dc7e-4e89-a87a-150d73ede783"
+                  },
+                  "source_output": "output",
+                  "destination_node": {
+                    "$component_ref": "e39b7aa3-837c-4326-8292-f1ce7228093b"
+                  },
+                  "destination_input": "content"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "2d83c145-f7e2-47c6-85b6-30c56c039c6f",
+                  "name": "start_step_step_value_extraction_io_to_query_context_update_step_rank_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "18dfc152-0d9c-4158-bd90-04ffc0ddb2e7"
+                  },
+                  "source_output": "step_value_extraction_io",
+                  "destination_node": {
+                    "$component_ref": "e39b7aa3-837c-4326-8292-f1ce7228093b"
+                  },
+                  "destination_input": "rank"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "0ea4adbd-e628-4514-8eb7-b771fb1b78c2",
+                  "name": "extra_requirements_rendering_step_extra_requirements_io_to_None End node_extra_requirements_io_data_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "source_node": {
+                    "$component_ref": "9fd42961-38ad-4bd9-885e-0c289a013248"
+                  },
+                  "source_output": "extra_requirements_io",
+                  "destination_node": {
+                    "$component_ref": "91e414cb-ed5d-4c7b-9c63-1d15ff208be9"
+                  },
+                  "destination_input": "extra_requirements_io"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "e94597da-d097-4e48-b100-dde0a5af711c",
+                  "name": "llm_query_generation_step_output_to_None End node_output_data_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "source_node": {
+                    "$component_ref": "17bf8a59-59dc-40f1-b745-b21d6f0f995c"
+                  },
+                  "source_output": "output",
+                  "destination_node": {
+                    "$component_ref": "91e414cb-ed5d-4c7b-9c63-1d15ff208be9"
+                  },
+                  "destination_input": "output"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "e6a914ef-a9d0-411b-9a25-a15aa05415d7",
+                  "name": "query_extraction_step_output_to_None End node_output_data_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "source_node": {
+                    "$component_ref": "8571ceae-dc7e-4e89-a87a-150d73ede783"
+                  },
+                  "source_output": "output",
+                  "destination_node": {
+                    "$component_ref": "91e414cb-ed5d-4c7b-9c63-1d15ff208be9"
+                  },
+                  "destination_input": "output"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "238191c3-d12b-4e2a-836b-15b444a8d162",
+                  "name": "retrieve_conetxt_step_tool_output_to_None End node_tool_output_data_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "source_node": {
+                    "$component_ref": "7cde648c-a820-4fab-8773-9d908b4e3ffc"
+                  },
+                  "source_output": "tool_output",
+                  "destination_node": {
+                    "$component_ref": "91e414cb-ed5d-4c7b-9c63-1d15ff208be9"
+                  },
+                  "destination_input": "tool_output"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "ec058878-558d-452e-bea9-3a4e8bde2762",
+                  "name": "query_context_update_step_tool_output_to_None End node_tool_output_data_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "source_node": {
+                    "$component_ref": "e39b7aa3-837c-4326-8292-f1ce7228093b"
+                  },
+                  "source_output": "tool_output",
+                  "destination_node": {
+                    "$component_ref": "91e414cb-ed5d-4c7b-9c63-1d15ff208be9"
+                  },
+                  "destination_input": "tool_output"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "7176dbbe-f7f8-40c9-9c0f-44e2fa125d06",
+                  "name": "query_context_rendering_step_rendered_previous_queries_to_None End node_rendered_previous_queries_data_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "source_node": {
+                    "$component_ref": "28b35e40-5216-419a-838c-88db033e55b4"
+                  },
+                  "source_output": "rendered_previous_queries",
+                  "destination_node": {
+                    "$component_ref": "91e414cb-ed5d-4c7b-9c63-1d15ff208be9"
+                  },
+                  "destination_input": "rendered_previous_queries"
+                }
+              ],
+              "$referenced_components": {
+                "18dfc152-0d9c-4158-bd90-04ffc0ddb2e7": {
+                  "component_type": "StartNode",
+                  "id": "18dfc152-0d9c-4158-bd90-04ffc0ddb2e7",
+                  "name": "start_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [
+                    {
+                      "description": "Rank of Step",
+                      "type": "string",
+                      "title": "step_value_extraction_io"
+                    },
+                    {
+                      "description": "Task Definition",
+                      "type": "string",
+                      "title": "task_extraction_io"
+                    },
+                    {
+                      "description": "tables",
+                      "type": "string",
+                      "title": "tables_io"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "description": "Rank of Step",
+                      "type": "string",
+                      "title": "step_value_extraction_io"
+                    },
+                    {
+                      "description": "Task Definition",
+                      "type": "string",
+                      "title": "task_extraction_io"
+                    },
+                    {
+                      "description": "tables",
+                      "type": "string",
+                      "title": "tables_io"
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ]
+                },
+                "7cde648c-a820-4fab-8773-9d908b4e3ffc": {
+                  "component_type": "ToolNode",
+                  "id": "7cde648c-a820-4fab-8773-9d908b4e3ffc",
+                  "name": "retrieve_conetxt_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "tool_output"
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ],
+                  "tool": {
+                    "component_type": "ServerTool",
+                    "id": "d246c855-4e99-46f8-853d-4af8db20fcc0",
+                    "name": "get_query_context_tool",
+                    "description": "Get query context content in step organized str format.",
+                    "metadata": {
+                      "__metadata_info__": {}
+                    },
+                    "inputs": [],
+                    "outputs": [
+                      {
+                        "type": "string",
+                        "title": "tool_output"
+                      }
+                    ],
+                    "requires_confirmation": false
+                  }
+                },
+                "28b35e40-5216-419a-838c-88db033e55b4": {
+                  "component_type": "ToolNode",
+                  "id": "28b35e40-5216-419a-838c-88db033e55b4",
+                  "name": "query_context_rendering_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [
+                    {
+                      "type": "string",
+                      "title": "step_value_extraction_io"
+                    },
+                    {
+                      "type": "string",
+                      "title": "retrieve_context_io"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "rendered_previous_queries"
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ],
+                  "tool": {
+                    "component_type": "ServerTool",
+                    "id": "63a56e4d-68d5-44dc-92b7-191b17e1a865",
+                    "name": "render_previous_step_queries",
+                    "description": "Rendering previous step queries to put in the prompt",
+                    "metadata": {
+                      "__metadata_info__": {}
+                    },
+                    "inputs": [
+                      {
+                        "type": "string",
+                        "title": "step_value_extraction_io"
+                      },
+                      {
+                        "type": "string",
+                        "title": "retrieve_context_io"
+                      }
+                    ],
+                    "outputs": [
+                      {
+                        "type": "string",
+                        "title": "rendered_previous_queries"
+                      }
+                    ],
+                    "requires_confirmation": false
+                  }
+                },
+                "9fd42961-38ad-4bd9-885e-0c289a013248": {
+                  "component_type": "ToolNode",
+                  "id": "9fd42961-38ad-4bd9-885e-0c289a013248",
+                  "name": "extra_requirements_rendering_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [
+                    {
+                      "type": "string",
+                      "title": "step_value_extraction_io"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "extra_requirements_io"
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ],
+                  "tool": {
+                    "component_type": "ServerTool",
+                    "id": "ca9719df-d742-4010-bcd9-b8997907f05a",
+                    "name": "render_extra_requirements",
+                    "description": "Rendering extra requirements to put in the prompt",
+                    "metadata": {
+                      "__metadata_info__": {}
+                    },
+                    "inputs": [
+                      {
+                        "type": "string",
+                        "title": "step_value_extraction_io"
+                      }
+                    ],
+                    "outputs": [
+                      {
+                        "type": "string",
+                        "title": "extra_requirements_io"
+                      }
+                    ],
+                    "requires_confirmation": false
+                  }
+                },
+                "17bf8a59-59dc-40f1-b745-b21d6f0f995c": {
+                  "component_type": "LlmNode",
+                  "id": "17bf8a59-59dc-40f1-b745-b21d6f0f995c",
+                  "name": "llm_query_generation_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [
+                    {
+                      "type": "string",
+                      "title": "tables_io"
+                    },
+                    {
+                      "description": "\"rendered_previous_queries\" input variable for the template",
+                      "type": "string",
+                      "title": "rendered_previous_queries"
+                    },
+                    {
+                      "type": "string",
+                      "title": "task_extraction_io"
+                    },
+                    {
+                      "description": "\"extra_requirements_io\" input variable for the template",
+                      "type": "string",
+                      "title": "extra_requirements_io"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "output"
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ],
+                  "llm_config": {
+                    "$component_ref": "93f51f5d-9b28-430c-9762-cfc7dff016ed"
+                  },
+                  "prompt_template": "You are a Data Retriever and you are required to execute a single Retrieveing step of a plan, your output should be a single table.\n\nYou have these available tables :\n{{ tables_io }}\n\n{{ rendered_previous_queries }}\n\nAnd you need to realise this query using SQLite queries : {{ task_extraction_io }}\n\nRequirements:\n- ONLY select the explicitly required columns \u2013 do NOT use SELECT *.\n- When retrieving transactions, ALWAYS include the transaction ID column.\n- Only use the available columns listed for each table\u2014assume no others exist.\n- Use the minimal number of tables necessary.\n{{ extra_requirements_io }}\n- Return only the query\u2014place it directly between the triple backticks below.\n- Do NOT use the word 'sql' before or after the query inside the backticks.\n- Do NOT use bindings in any form.\n\nOutput format:\n```\n(your query here)\n```\n"
+                },
+                "8571ceae-dc7e-4e89-a87a-150d73ede783": {
+                  "component_type": "ToolNode",
+                  "id": "8571ceae-dc7e-4e89-a87a-150d73ede783",
+                  "name": "query_extraction_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [
+                    {
+                      "type": "string",
+                      "title": "text"
+                    },
+                    {
+                      "type": "string",
+                      "title": "regex_pattern",
+                      "default": "```(?:sql)?\\s*([\\s\\S]*?)```"
+                    },
+                    {
+                      "type": "boolean",
+                      "title": "return_first_match_only",
+                      "default": true
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "output",
+                      "default": ""
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ],
+                  "tool": {
+                    "component_type": "ServerTool",
+                    "id": "efa2bd8f-508a-4ace-8607-25d9fd8ef31a",
+                    "name": "regex_extraction",
+                    "description": "Regex extraction",
+                    "metadata": {
+                      "__metadata_info__": {}
+                    },
+                    "inputs": [
+                      {
+                        "type": "string",
+                        "title": "text"
+                      },
+                      {
+                        "type": "string",
+                        "title": "regex_pattern",
+                        "default": "```(?:sql)?\\s*([\\s\\S]*?)```"
+                      },
+                      {
+                        "type": "boolean",
+                        "title": "return_first_match_only",
+                        "default": true
+                      }
+                    ],
+                    "outputs": [
+                      {
+                        "type": "string",
+                        "title": "output",
+                        "default": ""
+                      }
+                    ],
+                    "requires_confirmation": false
+                  }
+                },
+                "e39b7aa3-837c-4326-8292-f1ce7228093b": {
+                  "component_type": "ToolNode",
+                  "id": "e39b7aa3-837c-4326-8292-f1ce7228093b",
+                  "name": "query_context_update_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [
+                    {
+                      "type": "string",
+                      "title": "rank"
+                    },
+                    {
+                      "type": "string",
+                      "title": "content"
+                    },
+                    {
+                      "type": "string",
+                      "title": "module",
+                      "default": "retriever"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "tool_output",
+                      "default": "Done"
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ],
+                  "tool": {
+                    "component_type": "ServerTool",
+                    "id": "e87a6032-3181-44ae-bec9-75db77437f64",
+                    "name": "update_query_context_memory",
+                    "description": "Update context memory",
+                    "metadata": {
+                      "__metadata_info__": {}
+                    },
+                    "inputs": [
+                      {
+                        "description": "Rank of the step",
+                        "type": "string",
+                        "title": "rank",
+                        "default": "0"
+                      },
+                      {
+                        "description": "element content",
+                        "type": "string",
+                        "title": "content",
+                        "default": ""
+                      },
+                      {
+                        "description": "either retriever or informer",
+                        "type": "string",
+                        "title": "module",
+                        "default": ""
+                      }
+                    ],
+                    "outputs": [
+                      {
+                        "type": "string",
+                        "title": "tool_output",
+                        "default": "nothing"
+                      }
+                    ],
+                    "requires_confirmation": false
+                  }
+                },
+                "91e414cb-ed5d-4c7b-9c63-1d15ff208be9": {
+                  "component_type": "EndNode",
+                  "id": "91e414cb-ed5d-4c7b-9c63-1d15ff208be9",
+                  "name": "None End node",
+                  "description": "End node representing all transitions to None in the WayFlow flow",
+                  "metadata": {},
+                  "inputs": [
+                    {
+                      "type": "string",
+                      "title": "extra_requirements_io"
+                    },
+                    {
+                      "type": "string",
+                      "title": "output",
+                      "default": ""
+                    },
+                    {
+                      "type": "string",
+                      "title": "tool_output",
+                      "default": "Done"
+                    },
+                    {
+                      "type": "string",
+                      "title": "rendered_previous_queries"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "extra_requirements_io"
+                    },
+                    {
+                      "type": "string",
+                      "title": "output",
+                      "default": ""
+                    },
+                    {
+                      "type": "string",
+                      "title": "tool_output",
+                      "default": "Done"
+                    },
+                    {
+                      "type": "string",
+                      "title": "rendered_previous_queries"
+                    }
+                  ],
+                  "branches": [],
+                  "branch_name": "next"
+                }
+              }
+            }
+          },
+          "191e4882-48ae-4f76-9fc3-05621532f868": {
+            "component_type": "FlowNode",
+            "id": "191e4882-48ae-4f76-9fc3-05621532f868",
+            "name": "informer_execution_step",
+            "description": "",
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "inputs": [
+              {
+                "description": "Rank of Step",
+                "type": "string",
+                "title": "step_value_extraction_io"
+              },
+              {
+                "description": "Task Definition",
+                "type": "string",
+                "title": "task_extraction_io"
+              },
+              {
+                "description": "Tables schema",
+                "type": "string",
+                "title": "tables_io"
+              },
+              {
+                "description": "Tables with content about transcations, accounts etc.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "key_type": {
+                  "type": "string"
+                },
+                "title": "data_tables"
+              }
+            ],
+            "outputs": [
+              {
+                "type": "string",
+                "title": "extra_requirements_io"
+              },
+              {
+                "type": "string",
+                "title": "output",
+                "default": ""
+              },
+              {
+                "type": "string",
+                "title": "tool_output"
+              },
+              {
+                "type": "string",
+                "title": "rendered_previous_queries"
+              }
+            ],
+            "branches": [
+              "next"
+            ],
+            "subflow": {
+              "component_type": "Flow",
+              "id": "e73c36e7-f957-4c63-a515-b94334186edc",
+              "name": "flow_c0f9ddbe__auto",
+              "description": "",
+              "metadata": {
+                "__metadata_info__": {}
+              },
+              "inputs": [
+                {
+                  "description": "Rank of Step",
+                  "type": "string",
+                  "title": "step_value_extraction_io"
+                },
+                {
+                  "description": "Task Definition",
+                  "type": "string",
+                  "title": "task_extraction_io"
+                },
+                {
+                  "description": "Tables schema",
+                  "type": "string",
+                  "title": "tables_io"
+                },
+                {
+                  "description": "Tables with content about transcations, accounts etc.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "key_type": {
+                    "type": "string"
+                  },
+                  "title": "data_tables"
+                }
+              ],
+              "outputs": [
+                {
+                  "type": "string",
+                  "title": "extra_requirements_io"
+                },
+                {
+                  "type": "string",
+                  "title": "output",
+                  "default": ""
+                },
+                {
+                  "type": "string",
+                  "title": "tool_output"
+                },
+                {
+                  "type": "string",
+                  "title": "rendered_previous_queries"
+                }
+              ],
+              "start_node": {
+                "$component_ref": "e76f2c22-ed73-4bb2-babf-0a1a7aa03717"
+              },
+              "nodes": [
+                {
+                  "$component_ref": "e76f2c22-ed73-4bb2-babf-0a1a7aa03717"
+                },
+                {
+                  "$component_ref": "54a5744a-1e48-4b38-8704-c1c10dc12eb3"
+                },
+                {
+                  "$component_ref": "ab63c9f0-90b2-4f5e-ac95-3de0bead01b3"
+                },
+                {
+                  "$component_ref": "d6f25a3d-e392-4dfa-b40b-b9a14dd93f99"
+                },
+                {
+                  "$component_ref": "01b54d65-bf17-4ce4-80d7-2e9b73b1cc2b"
+                },
+                {
+                  "$component_ref": "b4c3124a-8032-4bf6-9a85-54b69ca7d82a"
+                },
+                {
+                  "$component_ref": "7cd0967f-fd93-4a20-8218-bd5511475f85"
+                },
+                {
+                  "$component_ref": "3667ab59-5732-4ab7-919d-6480c997b461"
+                },
+                {
+                  "$component_ref": "9d0ecf35-cdba-4007-a56b-61c0d70c827e"
+                },
+                {
+                  "$component_ref": "04054e2c-57fa-4687-9664-2deb98e0742c"
+                }
+              ],
+              "control_flow_connections": [
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "4ff16c70-5a89-4640-8103-7ba47b899c79",
+                  "name": "start_step_to_retrieve_conetxt_step_control_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "from_node": {
+                    "$component_ref": "e76f2c22-ed73-4bb2-babf-0a1a7aa03717"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "54a5744a-1e48-4b38-8704-c1c10dc12eb3"
+                  }
+                },
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "b826736a-8e93-456f-aaf8-d6964503a8e9",
+                  "name": "retrieve_conetxt_step_to_query_context_rendering_step_control_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "from_node": {
+                    "$component_ref": "54a5744a-1e48-4b38-8704-c1c10dc12eb3"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "ab63c9f0-90b2-4f5e-ac95-3de0bead01b3"
+                  }
+                },
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "5054c498-62de-4fc0-8f0b-46c49640daf1",
+                  "name": "query_context_rendering_step_to_extra_requirements_rendering_step_control_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "from_node": {
+                    "$component_ref": "ab63c9f0-90b2-4f5e-ac95-3de0bead01b3"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "d6f25a3d-e392-4dfa-b40b-b9a14dd93f99"
+                  }
+                },
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "2716528c-3423-43fb-8030-659d271ccb1c",
+                  "name": "extra_requirements_rendering_step_to_llm_query_generation_step_control_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "from_node": {
+                    "$component_ref": "d6f25a3d-e392-4dfa-b40b-b9a14dd93f99"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "01b54d65-bf17-4ce4-80d7-2e9b73b1cc2b"
+                  }
+                },
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "c3fba234-a72a-4018-a549-e37d8a73c9f6",
+                  "name": "llm_query_generation_step_to_query_extraction_step_control_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "from_node": {
+                    "$component_ref": "01b54d65-bf17-4ce4-80d7-2e9b73b1cc2b"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "b4c3124a-8032-4bf6-9a85-54b69ca7d82a"
+                  }
+                },
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "e0871b6d-7567-44f6-a2ef-d3ea06a957a9",
+                  "name": "query_extraction_step_to_query_execution_step_control_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "from_node": {
+                    "$component_ref": "b4c3124a-8032-4bf6-9a85-54b69ca7d82a"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "7cd0967f-fd93-4a20-8218-bd5511475f85"
+                  }
+                },
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "472f54cc-1028-4c4b-8713-16efd8392abd",
+                  "name": "query_execution_step_to_query_context_update_step_control_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "from_node": {
+                    "$component_ref": "7cd0967f-fd93-4a20-8218-bd5511475f85"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "3667ab59-5732-4ab7-919d-6480c997b461"
+                  }
+                },
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "e5547a38-55d8-425b-b64b-31d8f52c379f",
+                  "name": "query_context_update_step_to_informational_memory_update_step_control_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "from_node": {
+                    "$component_ref": "3667ab59-5732-4ab7-919d-6480c997b461"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "9d0ecf35-cdba-4007-a56b-61c0d70c827e"
+                  }
+                },
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "d170737a-2123-4283-ba4f-402981c2254d",
+                  "name": "informational_memory_update_step_to_None End node_control_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "from_node": {
+                    "$component_ref": "9d0ecf35-cdba-4007-a56b-61c0d70c827e"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "04054e2c-57fa-4687-9664-2deb98e0742c"
+                  }
+                }
+              ],
+              "data_flow_connections": [
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "7d0d0150-df28-4c40-829f-5702c8b9bca5",
+                  "name": "start_step_step_value_extraction_io_to_query_context_rendering_step_step_value_extraction_io_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "e76f2c22-ed73-4bb2-babf-0a1a7aa03717"
+                  },
+                  "source_output": "step_value_extraction_io",
+                  "destination_node": {
+                    "$component_ref": "ab63c9f0-90b2-4f5e-ac95-3de0bead01b3"
+                  },
+                  "destination_input": "step_value_extraction_io"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "6b7c3acd-6e2e-469b-8a83-1f370f5894b8",
+                  "name": "start_step_step_value_extraction_io_to_extra_requirements_rendering_step_step_value_extraction_io_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "e76f2c22-ed73-4bb2-babf-0a1a7aa03717"
+                  },
+                  "source_output": "step_value_extraction_io",
+                  "destination_node": {
+                    "$component_ref": "d6f25a3d-e392-4dfa-b40b-b9a14dd93f99"
+                  },
+                  "destination_input": "step_value_extraction_io"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "6536a9b3-56fa-4c4f-9b07-9bd299a96f09",
+                  "name": "query_context_rendering_step_rendered_previous_queries_to_llm_query_generation_step_rendered_previous_queries_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "ab63c9f0-90b2-4f5e-ac95-3de0bead01b3"
+                  },
+                  "source_output": "rendered_previous_queries",
+                  "destination_node": {
+                    "$component_ref": "01b54d65-bf17-4ce4-80d7-2e9b73b1cc2b"
+                  },
+                  "destination_input": "rendered_previous_queries"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "7b7b67b5-2bd8-44f5-baf5-cee3c88fc685",
+                  "name": "extra_requirements_rendering_step_extra_requirements_io_to_llm_query_generation_step_extra_requirements_io_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "d6f25a3d-e392-4dfa-b40b-b9a14dd93f99"
+                  },
+                  "source_output": "extra_requirements_io",
+                  "destination_node": {
+                    "$component_ref": "01b54d65-bf17-4ce4-80d7-2e9b73b1cc2b"
+                  },
+                  "destination_input": "extra_requirements_io"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "417a43d0-6026-4de3-a2db-6ecdb89c1ebf",
+                  "name": "start_step_task_extraction_io_to_llm_query_generation_step_task_extraction_io_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "e76f2c22-ed73-4bb2-babf-0a1a7aa03717"
+                  },
+                  "source_output": "task_extraction_io",
+                  "destination_node": {
+                    "$component_ref": "01b54d65-bf17-4ce4-80d7-2e9b73b1cc2b"
+                  },
+                  "destination_input": "task_extraction_io"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "4057724c-8249-42a4-841c-9a534ca244fe",
+                  "name": "start_step_tables_io_to_llm_query_generation_step_tables_io_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "e76f2c22-ed73-4bb2-babf-0a1a7aa03717"
+                  },
+                  "source_output": "tables_io",
+                  "destination_node": {
+                    "$component_ref": "01b54d65-bf17-4ce4-80d7-2e9b73b1cc2b"
+                  },
+                  "destination_input": "tables_io"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "5566aae6-6cfc-46d3-aada-88e7b05a77b8",
+                  "name": "retrieve_conetxt_step_tool_output_to_query_context_rendering_step_retrieve_context_io_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "54a5744a-1e48-4b38-8704-c1c10dc12eb3"
+                  },
+                  "source_output": "tool_output",
+                  "destination_node": {
+                    "$component_ref": "ab63c9f0-90b2-4f5e-ac95-3de0bead01b3"
+                  },
+                  "destination_input": "retrieve_context_io"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "caedf4ce-06ef-42c2-bf54-f158c696a535",
+                  "name": "llm_query_generation_step_output_to_query_extraction_step_text_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "01b54d65-bf17-4ce4-80d7-2e9b73b1cc2b"
+                  },
+                  "source_output": "output",
+                  "destination_node": {
+                    "$component_ref": "b4c3124a-8032-4bf6-9a85-54b69ca7d82a"
+                  },
+                  "destination_input": "text"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "45fd8747-4661-4d5a-bdb1-8390bc5c12db",
+                  "name": "query_extraction_step_output_to_query_execution_step_query_extraction_io_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "b4c3124a-8032-4bf6-9a85-54b69ca7d82a"
+                  },
+                  "source_output": "output",
+                  "destination_node": {
+                    "$component_ref": "7cd0967f-fd93-4a20-8218-bd5511475f85"
+                  },
+                  "destination_input": "query_extraction_io"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "537b69d4-741d-4c72-9725-2de4f4a74138",
+                  "name": "start_step_data_tables_to_query_execution_step_data_tables_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "e76f2c22-ed73-4bb2-babf-0a1a7aa03717"
+                  },
+                  "source_output": "data_tables",
+                  "destination_node": {
+                    "$component_ref": "7cd0967f-fd93-4a20-8218-bd5511475f85"
+                  },
+                  "destination_input": "data_tables"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "a4e961ec-e8a3-4493-a612-139da99807d5",
+                  "name": "query_extraction_step_output_to_query_context_update_step_content_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "b4c3124a-8032-4bf6-9a85-54b69ca7d82a"
+                  },
+                  "source_output": "output",
+                  "destination_node": {
+                    "$component_ref": "3667ab59-5732-4ab7-919d-6480c997b461"
+                  },
+                  "destination_input": "content"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "4f1e3458-1b31-442b-87a6-231a02dcc269",
+                  "name": "start_step_step_value_extraction_io_to_query_context_update_step_rank_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "e76f2c22-ed73-4bb2-babf-0a1a7aa03717"
+                  },
+                  "source_output": "step_value_extraction_io",
+                  "destination_node": {
+                    "$component_ref": "3667ab59-5732-4ab7-919d-6480c997b461"
+                  },
+                  "destination_input": "rank"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "d602d4f8-3844-4884-8d93-87c1a2fcd041",
+                  "name": "query_execution_step_tool_output_to_informational_memory_update_step_content_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "7cd0967f-fd93-4a20-8218-bd5511475f85"
+                  },
+                  "source_output": "tool_output",
+                  "destination_node": {
+                    "$component_ref": "9d0ecf35-cdba-4007-a56b-61c0d70c827e"
+                  },
+                  "destination_input": "content"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "fe8b89b3-5766-4137-9747-af8800099954",
+                  "name": "start_step_step_value_extraction_io_to_informational_memory_update_step_rank_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "e76f2c22-ed73-4bb2-babf-0a1a7aa03717"
+                  },
+                  "source_output": "step_value_extraction_io",
+                  "destination_node": {
+                    "$component_ref": "9d0ecf35-cdba-4007-a56b-61c0d70c827e"
+                  },
+                  "destination_input": "rank"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "d6a09bd7-292d-400e-9ee6-3a086eaa9ea5",
+                  "name": "extra_requirements_rendering_step_extra_requirements_io_to_None End node_extra_requirements_io_data_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "source_node": {
+                    "$component_ref": "d6f25a3d-e392-4dfa-b40b-b9a14dd93f99"
+                  },
+                  "source_output": "extra_requirements_io",
+                  "destination_node": {
+                    "$component_ref": "04054e2c-57fa-4687-9664-2deb98e0742c"
+                  },
+                  "destination_input": "extra_requirements_io"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "a580fc67-3254-467c-b4a4-e5491fd445a8",
+                  "name": "llm_query_generation_step_output_to_None End node_output_data_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "source_node": {
+                    "$component_ref": "01b54d65-bf17-4ce4-80d7-2e9b73b1cc2b"
+                  },
+                  "source_output": "output",
+                  "destination_node": {
+                    "$component_ref": "04054e2c-57fa-4687-9664-2deb98e0742c"
+                  },
+                  "destination_input": "output"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "1b5136e0-a9ab-44dd-9372-b0e6843187e2",
+                  "name": "query_extraction_step_output_to_None End node_output_data_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "source_node": {
+                    "$component_ref": "b4c3124a-8032-4bf6-9a85-54b69ca7d82a"
+                  },
+                  "source_output": "output",
+                  "destination_node": {
+                    "$component_ref": "04054e2c-57fa-4687-9664-2deb98e0742c"
+                  },
+                  "destination_input": "output"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "2c148eb0-a45c-4dd1-aba8-4664a5c77248",
+                  "name": "retrieve_conetxt_step_tool_output_to_None End node_tool_output_data_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "source_node": {
+                    "$component_ref": "54a5744a-1e48-4b38-8704-c1c10dc12eb3"
+                  },
+                  "source_output": "tool_output",
+                  "destination_node": {
+                    "$component_ref": "04054e2c-57fa-4687-9664-2deb98e0742c"
+                  },
+                  "destination_input": "tool_output"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "1d49010a-cf32-4eae-b6b0-fdd04dcf274b",
+                  "name": "query_execution_step_tool_output_to_None End node_tool_output_data_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "source_node": {
+                    "$component_ref": "7cd0967f-fd93-4a20-8218-bd5511475f85"
+                  },
+                  "source_output": "tool_output",
+                  "destination_node": {
+                    "$component_ref": "04054e2c-57fa-4687-9664-2deb98e0742c"
+                  },
+                  "destination_input": "tool_output"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "218d71c0-ad56-485d-9eb3-762a6c28617e",
+                  "name": "query_context_update_step_tool_output_to_None End node_tool_output_data_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "source_node": {
+                    "$component_ref": "3667ab59-5732-4ab7-919d-6480c997b461"
+                  },
+                  "source_output": "tool_output",
+                  "destination_node": {
+                    "$component_ref": "04054e2c-57fa-4687-9664-2deb98e0742c"
+                  },
+                  "destination_input": "tool_output"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "a018b4c4-23a5-437c-b700-f77d08833a2c",
+                  "name": "informational_memory_update_step_tool_output_to_None End node_tool_output_data_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "source_node": {
+                    "$component_ref": "9d0ecf35-cdba-4007-a56b-61c0d70c827e"
+                  },
+                  "source_output": "tool_output",
+                  "destination_node": {
+                    "$component_ref": "04054e2c-57fa-4687-9664-2deb98e0742c"
+                  },
+                  "destination_input": "tool_output"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "1dba1ff7-6f7c-4be0-bb07-8b0984427772",
+                  "name": "query_context_rendering_step_rendered_previous_queries_to_None End node_rendered_previous_queries_data_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "source_node": {
+                    "$component_ref": "ab63c9f0-90b2-4f5e-ac95-3de0bead01b3"
+                  },
+                  "source_output": "rendered_previous_queries",
+                  "destination_node": {
+                    "$component_ref": "04054e2c-57fa-4687-9664-2deb98e0742c"
+                  },
+                  "destination_input": "rendered_previous_queries"
+                }
+              ],
+              "$referenced_components": {
+                "e76f2c22-ed73-4bb2-babf-0a1a7aa03717": {
+                  "component_type": "StartNode",
+                  "id": "e76f2c22-ed73-4bb2-babf-0a1a7aa03717",
+                  "name": "start_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [
+                    {
+                      "description": "Rank of Step",
+                      "type": "string",
+                      "title": "step_value_extraction_io"
+                    },
+                    {
+                      "description": "Task Definition",
+                      "type": "string",
+                      "title": "task_extraction_io"
+                    },
+                    {
+                      "description": "Tables schema",
+                      "type": "string",
+                      "title": "tables_io"
+                    },
+                    {
+                      "description": "Tables with content about transcations, accounts etc.",
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "key_type": {
+                        "type": "string"
+                      },
+                      "title": "data_tables"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "description": "Rank of Step",
+                      "type": "string",
+                      "title": "step_value_extraction_io"
+                    },
+                    {
+                      "description": "Task Definition",
+                      "type": "string",
+                      "title": "task_extraction_io"
+                    },
+                    {
+                      "description": "Tables schema",
+                      "type": "string",
+                      "title": "tables_io"
+                    },
+                    {
+                      "description": "Tables with content about transcations, accounts etc.",
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "key_type": {
+                        "type": "string"
+                      },
+                      "title": "data_tables"
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ]
+                },
+                "54a5744a-1e48-4b38-8704-c1c10dc12eb3": {
+                  "component_type": "ToolNode",
+                  "id": "54a5744a-1e48-4b38-8704-c1c10dc12eb3",
+                  "name": "retrieve_conetxt_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "tool_output"
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ],
+                  "tool": {
+                    "component_type": "ServerTool",
+                    "id": "27b85b2f-7787-4e4a-8843-50e2ea3d100e",
+                    "name": "get_query_context_tool",
+                    "description": "Get query context content in step organized str format.",
+                    "metadata": {
+                      "__metadata_info__": {}
+                    },
+                    "inputs": [],
+                    "outputs": [
+                      {
+                        "type": "string",
+                        "title": "tool_output"
+                      }
+                    ],
+                    "requires_confirmation": false
+                  }
+                },
+                "ab63c9f0-90b2-4f5e-ac95-3de0bead01b3": {
+                  "component_type": "ToolNode",
+                  "id": "ab63c9f0-90b2-4f5e-ac95-3de0bead01b3",
+                  "name": "query_context_rendering_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [
+                    {
+                      "type": "string",
+                      "title": "step_value_extraction_io"
+                    },
+                    {
+                      "type": "string",
+                      "title": "retrieve_context_io"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "rendered_previous_queries"
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ],
+                  "tool": {
+                    "component_type": "ServerTool",
+                    "id": "a568aaeb-7698-4f39-ab40-4be53cbd4bde",
+                    "name": "render_previous_step_queries",
+                    "description": "Rendering previous step queries to put in the prompt",
+                    "metadata": {
+                      "__metadata_info__": {}
+                    },
+                    "inputs": [
+                      {
+                        "type": "string",
+                        "title": "step_value_extraction_io"
+                      },
+                      {
+                        "type": "string",
+                        "title": "retrieve_context_io"
+                      }
+                    ],
+                    "outputs": [
+                      {
+                        "type": "string",
+                        "title": "rendered_previous_queries"
+                      }
+                    ],
+                    "requires_confirmation": false
+                  }
+                },
+                "d6f25a3d-e392-4dfa-b40b-b9a14dd93f99": {
+                  "component_type": "ToolNode",
+                  "id": "d6f25a3d-e392-4dfa-b40b-b9a14dd93f99",
+                  "name": "extra_requirements_rendering_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [
+                    {
+                      "type": "string",
+                      "title": "step_value_extraction_io"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "extra_requirements_io"
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ],
+                  "tool": {
+                    "component_type": "ServerTool",
+                    "id": "32b8d2bd-2769-433b-a5ea-d9e117195ad1",
+                    "name": "render_extra_requirements",
+                    "description": "Rendering extra requirements to put in the prompt",
+                    "metadata": {
+                      "__metadata_info__": {}
+                    },
+                    "inputs": [
+                      {
+                        "type": "string",
+                        "title": "step_value_extraction_io"
+                      }
+                    ],
+                    "outputs": [
+                      {
+                        "type": "string",
+                        "title": "extra_requirements_io"
+                      }
+                    ],
+                    "requires_confirmation": false
+                  }
+                },
+                "01b54d65-bf17-4ce4-80d7-2e9b73b1cc2b": {
+                  "component_type": "LlmNode",
+                  "id": "01b54d65-bf17-4ce4-80d7-2e9b73b1cc2b",
+                  "name": "llm_query_generation_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [
+                    {
+                      "type": "string",
+                      "title": "tables_io"
+                    },
+                    {
+                      "description": "\"rendered_previous_queries\" input variable for the template",
+                      "type": "string",
+                      "title": "rendered_previous_queries"
+                    },
+                    {
+                      "type": "string",
+                      "title": "task_extraction_io"
+                    },
+                    {
+                      "description": "\"extra_requirements_io\" input variable for the template",
+                      "type": "string",
+                      "title": "extra_requirements_io"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "output"
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ],
+                  "llm_config": {
+                    "$component_ref": "93f51f5d-9b28-430c-9762-cfc7dff016ed"
+                  },
+                  "prompt_template": "You are an Informer, your goal is to receive a table as input and retrieve data from it. For e.g, get values from it like the length, the max-min, values, informations, etc...\n\nYou have these available tables :\n{{ tables_io }}\n\n{{ rendered_previous_queries }}\n\nAnd you need to realise this query using SQLite queries : {{ task_extraction_io }}\n\nRequirements:\n- Use only a SELECT statement for your answer\u2014do not use or generate any WITH clauses or Common Table Expressions (CTEs) for previous queries or prior-step results in your output.\n- You may refer to the results of previous queries provided (such as tables or temporary views made available from prior steps), but do not redefine these queries or include their logic in your output. Assume those previous step results exist and are available for use as tables.\n- You may use WITH clauses or CTEs in your query if needed, but only for tables available in the current step (not for prior-step queries).\n- ONLY select the explicitly required columns\u2014do NOT use SELECT *.\n- Only use the available columns listed for each table\u2014assume no others exist.\n- Use the minimal number of tables necessary.\n{{ extra_requirements_io }}\n- Return only the query\u2014place it directly between the triple backticks below.\n- Do NOT use the word 'sql' before or after the query inside the backticks.\n- Do NOT use bindings in any form.\n\nOutput format:\n```\n(your query here)\n```\n"
+                },
+                "b4c3124a-8032-4bf6-9a85-54b69ca7d82a": {
+                  "component_type": "ToolNode",
+                  "id": "b4c3124a-8032-4bf6-9a85-54b69ca7d82a",
+                  "name": "query_extraction_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [
+                    {
+                      "type": "string",
+                      "title": "text"
+                    },
+                    {
+                      "type": "string",
+                      "title": "regex_pattern",
+                      "default": "```(?:sql)?\\s*([\\s\\S]*?)```"
+                    },
+                    {
+                      "type": "boolean",
+                      "title": "return_first_match_only",
+                      "default": true
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "output",
+                      "default": ""
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ],
+                  "tool": {
+                    "component_type": "ServerTool",
+                    "id": "053d7c19-2a98-46c9-9155-aae8dce825ac",
+                    "name": "regex_extraction",
+                    "description": "Regex extraction",
+                    "metadata": {
+                      "__metadata_info__": {}
+                    },
+                    "inputs": [
+                      {
+                        "type": "string",
+                        "title": "text"
+                      },
+                      {
+                        "type": "string",
+                        "title": "regex_pattern",
+                        "default": "```(?:sql)?\\s*([\\s\\S]*?)```"
+                      },
+                      {
+                        "type": "boolean",
+                        "title": "return_first_match_only",
+                        "default": true
+                      }
+                    ],
+                    "outputs": [
+                      {
+                        "type": "string",
+                        "title": "output",
+                        "default": ""
+                      }
+                    ],
+                    "requires_confirmation": false
+                  }
+                },
+                "7cd0967f-fd93-4a20-8218-bd5511475f85": {
+                  "component_type": "ToolNode",
+                  "id": "7cd0967f-fd93-4a20-8218-bd5511475f85",
+                  "name": "query_execution_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [
+                    {
+                      "type": "string",
+                      "title": "query_extraction_io"
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "key_type": {
+                        "type": "string"
+                      },
+                      "title": "data_tables"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "tool_output"
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ],
+                  "tool": {
+                    "component_type": "ServerTool",
+                    "id": "87898382-3b23-4139-b722-12790b909501",
+                    "name": "execute_query_tool",
+                    "description": "executes a query on mock FCDM Schema and outputs in string format",
+                    "metadata": {
+                      "__metadata_info__": {}
+                    },
+                    "inputs": [
+                      {
+                        "description": "Query to be executed",
+                        "type": "string",
+                        "title": "query_extraction_io",
+                        "default": ""
+                      },
+                      {
+                        "description": "Tables with needed data for transactions and accounts.",
+                        "title": "data_tables",
+                        "default": ""
+                      }
+                    ],
+                    "outputs": [
+                      {
+                        "type": "string",
+                        "title": "tool_output"
+                      }
+                    ],
+                    "requires_confirmation": false
+                  }
+                },
+                "3667ab59-5732-4ab7-919d-6480c997b461": {
+                  "component_type": "ToolNode",
+                  "id": "3667ab59-5732-4ab7-919d-6480c997b461",
+                  "name": "query_context_update_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [
+                    {
+                      "type": "string",
+                      "title": "rank"
+                    },
+                    {
+                      "type": "string",
+                      "title": "content"
+                    },
+                    {
+                      "type": "string",
+                      "title": "module",
+                      "default": "informer"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "tool_output"
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ],
+                  "tool": {
+                    "component_type": "ServerTool",
+                    "id": "d246ff39-863e-47a4-9a2e-84e561ab3016",
+                    "name": "update_query_context_memory",
+                    "description": "Update context memory",
+                    "metadata": {
+                      "__metadata_info__": {}
+                    },
+                    "inputs": [
+                      {
+                        "description": "Rank of the step",
+                        "type": "string",
+                        "title": "rank",
+                        "default": "0"
+                      },
+                      {
+                        "description": "element content",
+                        "type": "string",
+                        "title": "content",
+                        "default": ""
+                      },
+                      {
+                        "description": "either retriever or informer",
+                        "type": "string",
+                        "title": "module",
+                        "default": ""
+                      }
+                    ],
+                    "outputs": [
+                      {
+                        "type": "string",
+                        "title": "tool_output",
+                        "default": "nothing"
+                      }
+                    ],
+                    "requires_confirmation": false
+                  }
+                },
+                "9d0ecf35-cdba-4007-a56b-61c0d70c827e": {
+                  "component_type": "ToolNode",
+                  "id": "9d0ecf35-cdba-4007-a56b-61c0d70c827e",
+                  "name": "informational_memory_update_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [
+                    {
+                      "type": "string",
+                      "title": "rank"
+                    },
+                    {
+                      "type": "string",
+                      "title": "content"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "tool_output"
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ],
+                  "tool": {
+                    "component_type": "ServerTool",
+                    "id": "fbf43b95-44d0-468a-9d27-4ff87b8348d0",
+                    "name": "update_informational_memory",
+                    "description": "Update informational memory",
+                    "metadata": {
+                      "__metadata_info__": {}
+                    },
+                    "inputs": [
+                      {
+                        "description": "Rank of the step",
+                        "type": "string",
+                        "title": "rank",
+                        "default": "0"
+                      },
+                      {
+                        "description": "element content",
+                        "type": "string",
+                        "title": "content",
+                        "default": ""
+                      }
+                    ],
+                    "outputs": [
+                      {
+                        "type": "string",
+                        "title": "tool_output",
+                        "default": "nothing"
+                      }
+                    ],
+                    "requires_confirmation": false
+                  }
+                },
+                "04054e2c-57fa-4687-9664-2deb98e0742c": {
+                  "component_type": "EndNode",
+                  "id": "04054e2c-57fa-4687-9664-2deb98e0742c",
+                  "name": "None End node",
+                  "description": "End node representing all transitions to None in the WayFlow flow",
+                  "metadata": {},
+                  "inputs": [
+                    {
+                      "type": "string",
+                      "title": "extra_requirements_io"
+                    },
+                    {
+                      "type": "string",
+                      "title": "output",
+                      "default": ""
+                    },
+                    {
+                      "type": "string",
+                      "title": "tool_output"
+                    },
+                    {
+                      "type": "string",
+                      "title": "rendered_previous_queries"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "extra_requirements_io"
+                    },
+                    {
+                      "type": "string",
+                      "title": "output",
+                      "default": ""
+                    },
+                    {
+                      "type": "string",
+                      "title": "tool_output"
+                    },
+                    {
+                      "type": "string",
+                      "title": "rendered_previous_queries"
+                    }
+                  ],
+                  "branches": [],
+                  "branch_name": "next"
+                }
+              }
+            }
+          },
+          "f97bf949-8aed-4a3e-9177-64c67a523e7d": {
+            "component_type": "FlowNode",
+            "id": "f97bf949-8aed-4a3e-9177-64c67a523e7d",
+            "name": "executor_execution_step",
+            "description": "",
+            "metadata": {
+              "__metadata_info__": {}
+            },
+            "inputs": [
+              {
+                "description": "Rank of Step",
+                "type": "string",
+                "title": "step_value_extraction_io"
+              },
+              {
+                "description": "Task Definition",
+                "type": "string",
+                "title": "task_extraction_io"
+              },
+              {
+                "description": "tables",
+                "type": "string",
+                "title": "tables_io"
+              }
+            ],
+            "outputs": [
+              {
+                "type": "string",
+                "title": "tool_output"
+              },
+              {
+                "type": "string",
+                "title": "output"
+              }
+            ],
+            "branches": [
+              "next"
+            ],
+            "subflow": {
+              "component_type": "Flow",
+              "id": "b6dd66f4-0ee4-4b5f-b968-58aa6c744790",
+              "name": "flow_6bfb4e3a__auto",
+              "description": "",
+              "metadata": {
+                "__metadata_info__": {}
+              },
+              "inputs": [
+                {
+                  "description": "Rank of Step",
+                  "type": "string",
+                  "title": "step_value_extraction_io"
+                },
+                {
+                  "description": "Task Definition",
+                  "type": "string",
+                  "title": "task_extraction_io"
+                },
+                {
+                  "description": "tables",
+                  "type": "string",
+                  "title": "tables_io"
+                }
+              ],
+              "outputs": [
+                {
+                  "type": "string",
+                  "title": "tool_output"
+                },
+                {
+                  "type": "string",
+                  "title": "output"
+                }
+              ],
+              "start_node": {
+                "$component_ref": "63226033-00e4-455c-a9fb-2f98a43bf5ca"
+              },
+              "nodes": [
+                {
+                  "$component_ref": "63226033-00e4-455c-a9fb-2f98a43bf5ca"
+                },
+                {
+                  "$component_ref": "edcf8559-714e-4eaf-9a1c-d250db60b842"
+                },
+                {
+                  "$component_ref": "e74ae78b-1450-4329-877e-aeab45c446a0"
+                },
+                {
+                  "$component_ref": "18c649e6-5b27-4430-b28a-1ed5bdb34e6d"
+                },
+                {
+                  "$component_ref": "5b5e3b85-099f-4132-bf1a-b9813b1a9463"
+                }
+              ],
+              "control_flow_connections": [
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "7aea4fe7-c4e6-4920-af1f-6c3700e15ca8",
+                  "name": "start_step_to_retrieve_info_step_control_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "from_node": {
+                    "$component_ref": "63226033-00e4-455c-a9fb-2f98a43bf5ca"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "edcf8559-714e-4eaf-9a1c-d250db60b842"
+                  }
+                },
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "62b07cd4-ffa1-4b3b-8d51-f4fdb8eb08ab",
+                  "name": "retrieve_info_step_to_llm_query_generation_step_control_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "from_node": {
+                    "$component_ref": "edcf8559-714e-4eaf-9a1c-d250db60b842"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "e74ae78b-1450-4329-877e-aeab45c446a0"
+                  }
+                },
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "d09ef72b-6ab3-4a5c-a0c4-4f6c4809b23e",
+                  "name": "llm_query_generation_step_to_informational_memory_update_step_control_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "from_node": {
+                    "$component_ref": "e74ae78b-1450-4329-877e-aeab45c446a0"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "18c649e6-5b27-4430-b28a-1ed5bdb34e6d"
+                  }
+                },
+                {
+                  "component_type": "ControlFlowEdge",
+                  "id": "85228ef3-06c0-4cd6-af92-33c8365bdb3b",
+                  "name": "informational_memory_update_step_to_None End node_control_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "from_node": {
+                    "$component_ref": "18c649e6-5b27-4430-b28a-1ed5bdb34e6d"
+                  },
+                  "from_branch": null,
+                  "to_node": {
+                    "$component_ref": "5b5e3b85-099f-4132-bf1a-b9813b1a9463"
+                  }
+                }
+              ],
+              "data_flow_connections": [
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "59f796d3-0cfb-4085-948e-4715d4fc48b9",
+                  "name": "retrieve_info_step_tool_output_to_llm_query_generation_step_informational_memory_io_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "edcf8559-714e-4eaf-9a1c-d250db60b842"
+                  },
+                  "source_output": "tool_output",
+                  "destination_node": {
+                    "$component_ref": "e74ae78b-1450-4329-877e-aeab45c446a0"
+                  },
+                  "destination_input": "informational_memory_io"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "a5e875c8-892e-4f11-84e6-6c922be4f376",
+                  "name": "start_step_task_extraction_io_to_llm_query_generation_step_task_extraction_io_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "63226033-00e4-455c-a9fb-2f98a43bf5ca"
+                  },
+                  "source_output": "task_extraction_io",
+                  "destination_node": {
+                    "$component_ref": "e74ae78b-1450-4329-877e-aeab45c446a0"
+                  },
+                  "destination_input": "task_extraction_io"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "8b739d98-c298-4670-bdb4-75d606b70e94",
+                  "name": "llm_query_generation_step_output_to_informational_memory_update_step_content_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "e74ae78b-1450-4329-877e-aeab45c446a0"
+                  },
+                  "source_output": "output",
+                  "destination_node": {
+                    "$component_ref": "18c649e6-5b27-4430-b28a-1ed5bdb34e6d"
+                  },
+                  "destination_input": "content"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "b170c8ff-b7b9-4551-bc0f-ec4b2df20bfc",
+                  "name": "start_step_step_value_extraction_io_to_informational_memory_update_step_rank_data_flow_edge",
+                  "description": null,
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "source_node": {
+                    "$component_ref": "63226033-00e4-455c-a9fb-2f98a43bf5ca"
+                  },
+                  "source_output": "step_value_extraction_io",
+                  "destination_node": {
+                    "$component_ref": "18c649e6-5b27-4430-b28a-1ed5bdb34e6d"
+                  },
+                  "destination_input": "rank"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "a8b2bd44-68a9-465b-8d60-293e99365341",
+                  "name": "retrieve_info_step_tool_output_to_None End node_tool_output_data_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "source_node": {
+                    "$component_ref": "edcf8559-714e-4eaf-9a1c-d250db60b842"
+                  },
+                  "source_output": "tool_output",
+                  "destination_node": {
+                    "$component_ref": "5b5e3b85-099f-4132-bf1a-b9813b1a9463"
+                  },
+                  "destination_input": "tool_output"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "f9ebb242-f5e8-40a3-bd0e-2df618f86524",
+                  "name": "informational_memory_update_step_tool_output_to_None End node_tool_output_data_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "source_node": {
+                    "$component_ref": "18c649e6-5b27-4430-b28a-1ed5bdb34e6d"
+                  },
+                  "source_output": "tool_output",
+                  "destination_node": {
+                    "$component_ref": "5b5e3b85-099f-4132-bf1a-b9813b1a9463"
+                  },
+                  "destination_input": "tool_output"
+                },
+                {
+                  "component_type": "DataFlowEdge",
+                  "id": "e404a53e-d967-4281-b49c-7b9c7afddff8",
+                  "name": "llm_query_generation_step_output_to_None End node_output_data_flow_edge",
+                  "description": null,
+                  "metadata": {},
+                  "source_node": {
+                    "$component_ref": "e74ae78b-1450-4329-877e-aeab45c446a0"
+                  },
+                  "source_output": "output",
+                  "destination_node": {
+                    "$component_ref": "5b5e3b85-099f-4132-bf1a-b9813b1a9463"
+                  },
+                  "destination_input": "output"
+                }
+              ],
+              "$referenced_components": {
+                "63226033-00e4-455c-a9fb-2f98a43bf5ca": {
+                  "component_type": "StartNode",
+                  "id": "63226033-00e4-455c-a9fb-2f98a43bf5ca",
+                  "name": "start_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [
+                    {
+                      "description": "Rank of Step",
+                      "type": "string",
+                      "title": "step_value_extraction_io"
+                    },
+                    {
+                      "description": "Task Definition",
+                      "type": "string",
+                      "title": "task_extraction_io"
+                    },
+                    {
+                      "description": "tables",
+                      "type": "string",
+                      "title": "tables_io"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "description": "Rank of Step",
+                      "type": "string",
+                      "title": "step_value_extraction_io"
+                    },
+                    {
+                      "description": "Task Definition",
+                      "type": "string",
+                      "title": "task_extraction_io"
+                    },
+                    {
+                      "description": "tables",
+                      "type": "string",
+                      "title": "tables_io"
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ]
+                },
+                "edcf8559-714e-4eaf-9a1c-d250db60b842": {
+                  "component_type": "ToolNode",
+                  "id": "edcf8559-714e-4eaf-9a1c-d250db60b842",
+                  "name": "retrieve_info_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "tool_output"
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ],
+                  "tool": {
+                    "component_type": "ServerTool",
+                    "id": "d6b1100e-786a-4759-a79c-003704ef77cb",
+                    "name": "get_informational_memory_tool",
+                    "description": "Get information memory content of each step organized in string format.",
+                    "metadata": {
+                      "__metadata_info__": {}
+                    },
+                    "inputs": [],
+                    "outputs": [
+                      {
+                        "type": "string",
+                        "title": "tool_output"
+                      }
+                    ],
+                    "requires_confirmation": false
+                  }
+                },
+                "e74ae78b-1450-4329-877e-aeab45c446a0": {
+                  "component_type": "LlmNode",
+                  "id": "e74ae78b-1450-4329-877e-aeab45c446a0",
+                  "name": "llm_query_generation_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [
+                    {
+                      "description": "\"informational_memory_io\" input variable for the template",
+                      "type": "string",
+                      "title": "informational_memory_io"
+                    },
+                    {
+                      "description": "\"task_extraction_io\" input variable for the template",
+                      "type": "string",
+                      "title": "task_extraction_io"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "output"
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ],
+                  "llm_config": {
+                    "$component_ref": "93f51f5d-9b28-430c-9762-cfc7dff016ed"
+                  },
+                  "prompt_template": "Using the following information and only the following information : {{informational_memory_io}}, execute the following step : {{task_extraction_io}}\nBe concise and brief in your answer, give only what was asked.\nRemember if this is the final answer, finish with:\n- <final answer: $your_answer$> with $your_answer$ being either Yes or No.\n- <reason: $your_reason$> with $your_reason$ being a concise, one sentence summary of the investigation that backs up the final answer.\n"
+                },
+                "18c649e6-5b27-4430-b28a-1ed5bdb34e6d": {
+                  "component_type": "ToolNode",
+                  "id": "18c649e6-5b27-4430-b28a-1ed5bdb34e6d",
+                  "name": "informational_memory_update_step",
+                  "description": "",
+                  "metadata": {
+                    "__metadata_info__": {}
+                  },
+                  "inputs": [
+                    {
+                      "type": "string",
+                      "title": "rank"
+                    },
+                    {
+                      "type": "string",
+                      "title": "content"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "tool_output"
+                    }
+                  ],
+                  "branches": [
+                    "next"
+                  ],
+                  "tool": {
+                    "component_type": "ServerTool",
+                    "id": "4c41f4b7-d689-4afe-8bcd-6df34f567aaf",
+                    "name": "update_informational_memory",
+                    "description": "Update informational memory",
+                    "metadata": {
+                      "__metadata_info__": {}
+                    },
+                    "inputs": [
+                      {
+                        "description": "Rank of the step",
+                        "type": "string",
+                        "title": "rank",
+                        "default": "0"
+                      },
+                      {
+                        "description": "element content",
+                        "type": "string",
+                        "title": "content",
+                        "default": ""
+                      }
+                    ],
+                    "outputs": [
+                      {
+                        "type": "string",
+                        "title": "tool_output",
+                        "default": "nothing"
+                      }
+                    ],
+                    "requires_confirmation": false
+                  }
+                },
+                "5b5e3b85-099f-4132-bf1a-b9813b1a9463": {
+                  "component_type": "EndNode",
+                  "id": "5b5e3b85-099f-4132-bf1a-b9813b1a9463",
+                  "name": "None End node",
+                  "description": "End node representing all transitions to None in the WayFlow flow",
+                  "metadata": {},
+                  "inputs": [
+                    {
+                      "type": "string",
+                      "title": "tool_output"
+                    },
+                    {
+                      "type": "string",
+                      "title": "output"
+                    }
+                  ],
+                  "outputs": [
+                    {
+                      "type": "string",
+                      "title": "tool_output"
+                    },
+                    {
+                      "type": "string",
+                      "title": "output"
+                    }
+                  ],
+                  "branches": [],
+                  "branch_name": "next"
+                }
+              }
+            }
+          },
+          "5d3e04b6-9721-43b7-8b94-78058d5bed96": {
+            "component_type": "EndNode",
+            "id": "5d3e04b6-9721-43b7-8b94-78058d5bed96",
+            "name": "None End node",
+            "description": "End node representing all transitions to None in the WayFlow flow",
+            "metadata": {},
+            "inputs": [
+              {
+                "type": "string",
+                "title": "output",
+                "default": ""
+              },
+              {
+                "type": "string",
+                "title": "tool_output",
+                "default": "Done"
+              }
+            ],
+            "outputs": [
+              {
+                "type": "string",
+                "title": "output",
+                "default": ""
+              },
+              {
+                "type": "string",
+                "title": "tool_output",
+                "default": "Done"
+              }
+            ],
+            "branches": [],
+            "branch_name": "next"
+          }
+        }
+      },
+      "reducers": {}
+    },
+    "62f03875-b099-4711-bb51-6021aef9d434": {
+      "component_type": "ToolNode",
+      "id": "62f03875-b099-4711-bb51-6021aef9d434",
+      "name": "output_step",
+      "description": "",
+      "metadata": {
+        "__metadata_info__": {}
+      },
+      "inputs": [],
+      "outputs": [
+        {
+          "description": "output of tool",
+          "type": "string",
+          "title": "tool_output"
+        }
+      ],
+      "branches": [
+        "next"
+      ],
+      "tool": {
+        "component_type": "ServerTool",
+        "id": "1ba5a8ba-0310-4f97-b42a-93c87a93a2c4",
+        "name": "get_informational_memory_tool",
+        "description": "Get information memory content of each step organized in string format.",
+        "metadata": {
+          "__metadata_info__": {}
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "string",
+            "title": "tool_output"
+          }
+        ],
+        "requires_confirmation": false
+      }
+    },
+    "6092f634-d449-4621-b9f6-bcf0ce314bd9": {
+      "component_type": "EndNode",
+      "id": "6092f634-d449-4621-b9f6-bcf0ce314bd9",
+      "name": "None End node",
+      "description": "End node representing all transitions to None in the WayFlow flow",
+      "metadata": {},
+      "inputs": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "output",
+          "default": []
+        },
+        {
+          "description": "output of tool",
+          "type": "string",
+          "title": "tool_output"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "output",
+          "default": []
+        },
+        {
+          "description": "output of tool",
+          "type": "string",
+          "title": "tool_output"
+        }
+      ],
+      "branches": [],
+      "branch_name": "next"
+    }
+  },
+  "agentspec_version": "25.4.2"
+}
